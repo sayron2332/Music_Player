@@ -6,7 +6,18 @@
         xmlns:local="clr-namespace:Music_Player"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <DockPanel Background="#FF151313" LastChildFill="False">
+        <DockPanel LastChildFill="False" DockPanel.Dock="Top">
+            <Label Margin="15" Foreground="Wheat" FontSize="30">Music</Label>
+            <Button Background="#FF151313" FontSize="14" DockPanel.Dock="Right" Width="115" Height="30" Foreground="Wheat" Margin="15">Додати Трек</Button>
+            <Button Background="#FF151313" FontSize="14" DockPanel.Dock="Right" Width="115" Height="30" Foreground="Wheat" Margin="15">Додати Плейліст</Button>
+            
+        </DockPanel>
+        <DockPanel>
+            <Label DockPanel.Dock="Top" Margin="15" Foreground="Wheat" FontSize="18">Ваші плейлісти</Label>
+            <ListBox Background="#FF151313">
+                
+            </ListBox>
+        </DockPanel>
+    </DockPanel>
 </Window>
