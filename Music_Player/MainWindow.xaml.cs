@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Data_acces;
+using Data_acces.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,17 @@ namespace Music_Player
     /// </summary>
     public partial class MainWindow : Window
     {
+        MusicPlayerDbContext DbContext;
         public MainWindow()
         {
+
+
             InitializeComponent();
+
+            DbContext= new MusicPlayerDbContext();
+
+            
         }
+        DbSet<Track> tracks { get; set; }
     }
 }
