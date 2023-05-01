@@ -5,19 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Music_Player"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <DockPanel Background="#FF151313" LastChildFill="False">
+        Title="MainWindow" Height="650" Width="1000" MinHeight="671" MinWidth="1000"  MaxHeight="700" MaxWidth="1200">
+    <DockPanel Background="#FF151313" LastChildFill="true">
         <DockPanel LastChildFill="False" DockPanel.Dock="Top">
-            <Label Margin="15" Foreground="Wheat" FontSize="30">Music</Label>
-            <Button Background="#FF151313" FontSize="14" DockPanel.Dock="Right" Width="115" Height="30" Foreground="Wheat" Margin="15">Додати Трек</Button>
-            <Button Background="#FF151313" FontSize="14" DockPanel.Dock="Right" Width="115" Height="30" Foreground="Wheat" Margin="15">Додати Плейліст</Button>
-            
+            <Label Margin="15" Foreground="Wheat" FontSize="30">SayDaf Sound</Label>
+            <Button Background="#FF151313" FontSize="14" DockPanel.Dock="Right" Width="115" Height="30" Foreground="Wheat" Margin="15">Пошук</Button>
+            <TextBox DockPanel.Dock="Right" Width="150" Height="30"></TextBox>
         </DockPanel>
-        <DockPanel>
+        <DockPanel DockPanel.Dock="left">
+            <Button Padding="20" FontSize="16" Foreground="Wheat" Background="DarkSalmon"   DockPanel.Dock="Top">Додати плейлист</Button>
             <Label DockPanel.Dock="Top" Margin="15" Foreground="Wheat" FontSize="18">Ваші плейлісти</Label>
             <ListBox Background="#FF151313">
-                
+
             </ListBox>
         </DockPanel>
+
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" FontSize="17" Padding="10"  VerticalAlignment="Bottom" Foreground="GhostWhite">Назва треку</TextBlock>
+            <TextBlock Grid.Column="1" FontSize="17" Padding="10"  VerticalAlignment="Bottom" Foreground="GhostWhite">Автор треку</TextBlock>
+            <TextBlock Grid.Column="2" FontSize="17" Padding="10"   VerticalAlignment="Bottom" Foreground="GhostWhite">Дата добавлення</TextBlock>
+            <TextBlock Grid.Column="3" FontSize="17" Padding="10"   VerticalAlignment="Bottom" Foreground="GhostWhite">Час тривання треку</TextBlock>
+        </Grid>
+
+        <DockPanel Height="110" Background="Black" DockPanel.Dock="Bottom">
+
+        </DockPanel>
+
+        <DockPanel MinHeight="315px" DockPanel.Dock="Bottom">
+            <ListBox Background="SlateGray" Opacity="0.5" ></ListBox>
+        </DockPanel>
+
     </DockPanel>
 </Window>
