@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Data_acces.Models
 {
-    public class Track
+    public class Playlist
     {
+        [Key]
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
-        public string Author { get; set; }
-        public IEnumerable<Playlist> Playlists { get; set; }  
-
-
+        public IEnumerable<Track> Tracks { get; set; }
+        public User User { get; set; }  
+        public int UserId { get; set; }
     }
 }

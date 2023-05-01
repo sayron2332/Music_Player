@@ -26,14 +26,10 @@ namespace Music_Player
         MusicPlayerDbContext DbContext;
         public MainWindow()
         {
-
-
             InitializeComponent();
-
-            DbContext= new MusicPlayerDbContext();
-
+            DbContext = new MusicPlayerDbContext();
             
         }
-        DbSet<Track> tracks { get; set; }
+        
     }
 }
