@@ -1,6 +1,7 @@
 ﻿using Data_acces;
 using Data_acces.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +24,19 @@ namespace Music_Player
     /// </summary>
     public partial class MainWindow : Window
     {
-        MusicPlayerDbContext DbContext;
+        MusicPlayerDbContext Context;
+        ViewModel Model;
         public MainWindow()
         {
             InitializeComponent();
-            DbContext = new MusicPlayerDbContext();
-            
+            Context = new MusicPlayerDbContext();
+            Model = new ViewModel();
+            this.DataContext = Model;
+        
+         
+
+
+
         }
         
     }

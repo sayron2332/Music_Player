@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +12,9 @@ namespace Data_acces
 {
     public class MusicPlayerDbContext : DbContext
     {
-      
-
+        public DbSet<Track> Tracks { get; set; }
+        public DbSet<Playlist> Playlists { get; set; }
+        public DbSet<User> Users { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -36,9 +38,7 @@ namespace Data_acces
                 .WithOne(a => a.User);
           
         }
-        DbSet<Track> Tracks { get; set; }
-        DbSet<Playlist> Playlists { get; set; }
-        DbSet<User> Users { get; set; }
+     
 
     }
 }
