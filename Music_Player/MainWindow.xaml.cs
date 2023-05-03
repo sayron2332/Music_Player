@@ -30,7 +30,7 @@ namespace Music_Player
         {
             InitializeComponent();
             Context = new MusicPlayerDbContext();
-            Model = new ViewModel();
+            Model = new ViewModel(Context);
             this.DataContext = Model;
         
          
@@ -38,6 +38,7 @@ namespace Music_Player
 
 
         }
+
         
     }
 }
