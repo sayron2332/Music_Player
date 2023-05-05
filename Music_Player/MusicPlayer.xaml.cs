@@ -1,8 +1,4 @@
-﻿using Data_acces;
-using Data_acces.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,20 +18,11 @@ namespace Music_Player
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MusicPlayer : Window
     {
-
-        public MainWindow()
+        public MusicPlayer()
         {
             InitializeComponent();
-
-        
-         
-
-
-
         }
-
-        
     }
 }
