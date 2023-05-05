@@ -25,10 +25,12 @@ namespace Music_Player
     public partial class MainWindow : Window
     {
         ViewModel viewModel;
+        MusicPlayerDbContext dbContext;
         public MainWindow()
         {
             InitializeComponent();
-            viewModel = new ViewModel();
+            dbContext = new MusicPlayerDbContext();
+            viewModel = new ViewModel(dbContext);
             this.DataContext = viewModel;
          
 

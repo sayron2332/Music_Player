@@ -16,10 +16,10 @@ namespace Music_Player
     [AddINotifyPropertyChangedInterface]
     public class ViewModel
     {
-        MusicPlayerDbContext context;
-        public ViewModel()
+        
+        public ViewModel(MusicPlayerDbContext context)
         {
-            context = new MusicPlayerDbContext();
+            
             playlists = new ObservableCollection<Playlist>(context.Playlists.ToArray());
            
             user = new ObservableCollection<User>(context.Users.ToArray());
