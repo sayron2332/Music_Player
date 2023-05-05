@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Music_Player"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:ViewModel}"
         Title="MusicPlayer" Height="650" Width="1000" MinHeight="671" MinWidth="1000">
+    
 
     <Window.Resources>
 
@@ -131,9 +133,9 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <!--НАЗВА ТРЕКУ-->
-                    <Label  VerticalAlignment="Center" Margin="10" FontSize="18" Foreground="White" Grid.Column="0" Grid.Row="0">Макдак</Label>
+                    <TextBlock Text="{Binding txtTrackName}"  VerticalAlignment="Center" Margin="10" FontSize="18" Foreground="White" Grid.Column="0" Grid.Row="0">Макдак</TextBlock>
                     <!--автор-->
-                    <Label  VerticalAlignment="Center" Margin="12" FontSize="16" Foreground="White" Grid.Column="0" Grid.Row="1">Алина Сексова</Label>
+                    <TextBlock Text="{Binding txtAvtorName}"  VerticalAlignment="Center" Margin="12" FontSize="16" Foreground="White" Grid.Column="0" Grid.Row="1">Алина Сексова</TextBlock>
                 </Grid>
 
 

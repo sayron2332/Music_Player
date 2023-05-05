@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Music_Player"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:ViewModel}"
         Title="Login Form"  MinHeight="350" MaxHeight="350" MinWidth="400" MaxWidth="400">
 
 
@@ -13,9 +14,13 @@
             <Label Content="SayDaf" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <Separator></Separator>
             <Label Content="Username" Foreground="White"/>
-            <TextBox  Background="#545d6a" Foreground="White" FontSize="18"/>
+            <TextBox Text="{Binding Login}"  Background="#545d6a" Foreground="White" FontSize="18"/>
             <Label Content="Password" Foreground="White"/>
-            <PasswordBox  Background="#545d6a" Foreground="White" FontSize="18"/>
+            
+            <TextBox Text="{Binding Password}" Background="#545d6a" Foreground="White" FontSize="18">
+                
+            </TextBox>
+            
             <Button Content="Login" Margin="60 35 60 10" Background="#545d6a" Foreground="White" FontSize="18" Click="click_btnLogin"/>
             <Button Content="Registration" Margin="60 0" Background="#545d6a" Foreground="White" FontSize="18" Click="click_btnRegister"/>
         </StackPanel>

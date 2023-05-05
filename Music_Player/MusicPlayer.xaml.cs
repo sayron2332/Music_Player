@@ -21,14 +21,15 @@ namespace Music_Player
     /// </summary>
     public partial class MusicPlayer : Window
     {
-        ViewModel Model;
-        MusicPlayerDbContext Context;
-        public MusicPlayer()
+        
+
+        public MusicPlayer(ViewModel Model)
         {
             InitializeComponent();
-            Model = new ViewModel(Context);
-            Context = new MusicPlayerDbContext();
-
+            //Context = new MusicPlayerDbContext();
+            //Model = new ViewModel(); 
+            
+            MessageBox.Show(Model.Password);
         }
     }
 }
