@@ -1,7 +1,4 @@
 ﻿using Data_acces;
-using Data_acces.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,29 +19,16 @@ namespace Music_Player
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MusicPlayer : Window
     {
-       
-        public MainWindow()
+        ViewModel Model;
+        MusicPlayerDbContext Context;
+        public MusicPlayer()
         {
             InitializeComponent();
-           
-        
-         
+            Model = new ViewModel(Context);
+            Context = new MusicPlayerDbContext();
 
-
-
-        }
-
-        private void click_btnRegister(object sender, RoutedEventArgs e)
-        {
-            MusicPlayer music = new MusicPlayer();
-            music.Show();
-        }
-
-        private void click_btnLogin(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

@@ -20,9 +20,12 @@ namespace Music_Player
         {
             context = new MusicPlayerDbContext();
             playlists = new ObservableCollection<Playlist>(context.Playlists.ToArray());
-            tracks = new ObservableCollection<Track>(context.Tracks.ToArray());
+           
             user = new ObservableCollection<User>(context.Users.ToArray());
+            tracks = new ObservableCollection<Track>(context.Tracks.ToArray());
         }
+
+   
         private ObservableCollection<Playlist> playlists;
         private ObservableCollection<Track> tracks;
         private ObservableCollection<User> user;
