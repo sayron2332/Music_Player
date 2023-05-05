@@ -24,12 +24,12 @@ namespace Music_Player
     /// </summary>
     public partial class MainWindow : Window
     {
-       
+        ViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
-           
-        
+            viewModel = new ViewModel();
+            this.DataContext = viewModel;
          
 
 
@@ -38,7 +38,7 @@ namespace Music_Player
 
         private void click_btnRegister(object sender, RoutedEventArgs e)
         {
-            MusicPlayer music = new MusicPlayer();
+            MusicPlayer music = new MusicPlayer(viewModel);
             music.Show();
         }
 
