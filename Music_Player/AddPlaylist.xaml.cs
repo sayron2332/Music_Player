@@ -45,6 +45,7 @@ namespace Music_Player
                 playlist.Name = model.PlaylistName;
                 playlist.UserId = User.Id;
                 Playlist playlist2 = new Playlist();
+
                 playlist2 = model.Playlists.FirstOrDefault(u => u.UserId == User.Id);
                 foreach (var item in model.Playlists)
                 {
