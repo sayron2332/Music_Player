@@ -73,7 +73,7 @@ namespace Music_Player
             if (User != null && User.Password == viewModel.Password)
             {
                 MessageBox.Show("You logined");
-                MusicPlayer music = new MusicPlayer(viewModel);
+                MusicPlayer music = new MusicPlayer(viewModel, User);
                 music.Show();
             }
             else

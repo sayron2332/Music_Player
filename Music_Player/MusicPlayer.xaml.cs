@@ -1,4 +1,5 @@
 ﻿using Data_acces;
+using Data_acces.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace Music_Player
     {
         
 
-        public MusicPlayer(ViewModel Model)
+        public MusicPlayer(ViewModel Model, User user)
         {
             InitializeComponent();
             this.DataContext = Model;
