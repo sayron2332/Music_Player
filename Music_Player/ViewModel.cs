@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Data_acces;
+using Data_acces.Migrations;
 using Data_acces.Models;
 using Microsoft.EntityFrameworkCore;
 using PropertyChanged;
@@ -16,10 +17,27 @@ namespace Music_Player
     [AddINotifyPropertyChangedInterface]
     public class ViewModel
     {
-        
-        public ViewModel(MusicPlayerDbContext context)
+        private static ViewModel Model = null;
+        MusicPlayerDbContext context;
+
+
+        public static ViewModel Initialize()
         {
-            
+            if (Model == null)
+            {
+                Model = new ViewModel();
+                return Model;
+            }
+            else
+            {
+                return Model;
+            }
+        
+        
+        }
+        protected ViewModel()
+        {
+            context = MusicPlayerDbContext.Initialize();
             playlists = new ObservableCollection<Playlist>(context.Playlists.ToArray());
            
             user = new ObservableCollection<User>(context.Users.ToArray());
@@ -33,6 +51,7 @@ namespace Music_Player
         private ObservableCollection<User> user;
         public string Login { get; set; }
         public double slVolume { get; set; }
+        public string PlaylistName { get; set; }
         public double slLentghTrack { get; set; }
         public string txtTrackName { get; set; }
         public string txtAvtorName { get; set; }

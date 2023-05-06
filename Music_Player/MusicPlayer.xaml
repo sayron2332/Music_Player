@@ -91,15 +91,25 @@
             <TextBox DockPanel.Dock="Right" Width="150" Height="30"></TextBox>
         </DockPanel>
         <DockPanel  DockPanel.Dock="left">
-            <Button Padding="10" FontSize="16" Foreground="Wheat" Background="DarkSalmon"   DockPanel.Dock="Top">Додати плейлист</Button>
+            <Button Padding="10" FontSize="16" Foreground="Wheat" Background="DarkSalmon"   DockPanel.Dock="Top" Click="Click_btnAddPlaylist">Додати плейлист</Button>
             <Button Padding="10" FontSize="16" Foreground="Wheat" Background="Crimson"   DockPanel.Dock="Top">Додати трек</Button>
             <Label DockPanel.Dock="Top" Margin="15" Foreground="Wheat" FontSize="18">Ваші плейлісти</Label>
 
 
             <Image DockPanel.Dock="Bottom" Height="166" Source="/e8674191d4568ea1905dcd859987030e.1000x1000x1.jpg" ></Image>
 
-            <ListBox DockPanel.Dock="Top" Background="#FF151313">
+            <ListBox ItemsSource="{Binding Playlists}" Foreground="White" DockPanel.Dock="Top" Background="#FF151313">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <TextBlock Text="{Binding Name}"
+                                       MaxWidth="150" FontWeight="Bold"
+                                       TextTrimming="CharacterEllipsis"
+                            ></TextBlock>
 
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
         </DockPanel>
 

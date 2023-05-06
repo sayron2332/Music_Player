@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Music_Player"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance local:ViewModel}"
-        Title="Login Form"  MinHeight="350" MaxHeight="350" MinWidth="400" MaxWidth="400">
+        Title="Login"  MinHeight="350" MaxHeight="350" MinWidth="400" MaxWidth="400">
 
 
     <Border Background="#2e3137" CornerRadius="0" Margin="0">

@@ -22,14 +22,22 @@ namespace Music_Player
     /// </summary>
     public partial class MusicPlayer : Window
     {
-        
-
-        public MusicPlayer(ViewModel Model, User user)
+        ViewModel viewModel;
+        User User;
+        public MusicPlayer(User user)
         {
             InitializeComponent();
-            this.DataContext = Model;
-            
+            User = user;
+            viewModel = ViewModel.Initialize();
+            this.DataContext = viewModel;
+            MessageBox.Show(viewModel.GetHashCode().ToString());
            
+        }
+
+        private void Click_btnAddPlaylist(object sender, RoutedEventArgs e)
+        {
+            AddPlaylist playlist = new AddPlaylist(User);
+            playlist.Show();
         }
     }
 }

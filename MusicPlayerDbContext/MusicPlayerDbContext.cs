@@ -12,6 +12,26 @@ namespace Data_acces
 {
     public class MusicPlayerDbContext : DbContext
     {
+        private static MusicPlayerDbContext Context = null;
+
+        protected MusicPlayerDbContext()
+        { 
+        
+        }
+        public static MusicPlayerDbContext Initialize()
+        {
+            if (Context == null)
+            {
+                Context = new MusicPlayerDbContext();
+                return Context;
+            }
+            else
+            {
+                return Context;
+            }
+
+
+        }
         public DbSet<Track> Tracks { get; set; }
         public DbSet<Playlist> Playlists { get; set; }
         public DbSet<User> Users { get; set; }
