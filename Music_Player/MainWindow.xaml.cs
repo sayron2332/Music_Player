@@ -29,10 +29,10 @@ namespace Music_Player
         public MainWindow()
         {
             InitializeComponent();
-            dbContext = new MusicPlayerDbContext();
-            viewModel = new ViewModel(dbContext);
+            dbContext = MusicPlayerDbContext.Initialize();
+            viewModel = ViewModel.Initialize();
             this.DataContext = viewModel;
-         
+            MessageBox.Show(viewModel.GetHashCode().ToString());
 
 
 
@@ -62,7 +62,7 @@ namespace Music_Player
             }
             else
             {
-                Console.WriteLine("Enter corect login or password");
+                MessageBox.Show("Enter corect login or password");
             }
            
         }
@@ -72,9 +72,10 @@ namespace Music_Player
             User User = dbContext.Users.FirstOrDefault(u => u.Login == viewModel.Login);
             if (User != null && User.Password == viewModel.Password)
             {
-                MessageBox.Show("You logined");
-                MusicPlayer music = new MusicPlayer(viewModel, User);
+               
+                MusicPlayer music = new MusicPlayer(User);
                 music.Show();
+                this.Close();
             }
             else
             {
