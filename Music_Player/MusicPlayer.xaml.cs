@@ -26,10 +26,9 @@ namespace Music_Player
         public MusicPlayer(ViewModel Model)
         {
             InitializeComponent();
-            //Context = new MusicPlayerDbContext();
-            //Model = new ViewModel(); 
+            this.DataContext = Model;
             
-            MessageBox.Show(Model.Password);
+           
         }
     }
 }

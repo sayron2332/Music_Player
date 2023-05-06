@@ -40,12 +40,49 @@ namespace Music_Player
 
         private void click_btnRegister(object sender, RoutedEventArgs e)
         {
-            MusicPlayer music = new MusicPlayer(viewModel);
-            music.Show();
+            if (viewModel.Login != " " && !String.IsNullOrWhiteSpace(viewModel.Login) && viewModel.Password != " " && !String.IsNullOrWhiteSpace(viewModel.Password))
+            {
+                User user = new User();
+                user.Login = viewModel.Login;
+                user.Password = viewModel.Password;
+
+                User userForDB = dbContext.Users.FirstOrDefault(u  => u.Login == user.Login);
+                if (userForDB != null && userForDB.Password == user.Password)
+                {
+                    MessageBox.Show("such user already exists");
+                }
+                else
+                {
+                    dbContext.Users.Add(user);
+                    dbContext.SaveChanges();
+                    MessageBox.Show("You register!!!");
+                }
+
+              
+            }
+            else
+            {
+                Console.WriteLine("Enter corect login or password");
+            }
+           
         }
 
         private void click_btnLogin(object sender, RoutedEventArgs e)
         {
+            User User = dbContext.Users.FirstOrDefault(u => u.Login == viewModel.Login);
+            if (User != null && User.Password == viewModel.Password)
+            {
+                MessageBox.Show("You logined");
+                MusicPlayer music = new MusicPlayer(viewModel);
+                music.Show();
+            }
+            else
+            {
+                MessageBox.Show("We dont have youre account");
+            }
+          
+
+          
             
         }
     }
