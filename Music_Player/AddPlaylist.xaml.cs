@@ -22,16 +22,18 @@ namespace Music_Player
     /// </summary>
     public partial class AddPlaylist : Window
     {
-        User User;
+        
         ViewModel model;
         MusicPlayerDbContext Context;
-        bool IsPlaylistToBeDatabase = false;
+        User User;
+    
         public AddPlaylist(User user)
         {
             InitializeComponent();
-            User = user;
+           
             Context = MusicPlayerDbContext.Initialize();
             model = ViewModel.Initialize();
+            User = user;
             this.DataContext = model;
 
         }
@@ -44,33 +46,20 @@ namespace Music_Player
                 Playlist playlist = new Playlist();
                 playlist.Name = model.PlaylistName;
                 playlist.UserId = User.Id;
-                Playlist playlist2 = new Playlist();
+                Context.Playlists.Add(playlist);
+                Context.SaveChanges();
+                MessageBox.Show("Playlist add");
+                MusicPlayer ms = new MusicPlayer(User);
+                this.Close();
+                ms.Show();
+             
+                
 
-                playlist2 = model.Playlists.FirstOrDefault(u => u.UserId == User.Id);
-                foreach (var item in model.Playlists)
-                {
-                  
-                    if (playlist.Name == item.Name && playlist2.UserId == playlist.UserId)
-                    {
-                        IsPlaylistToBeDatabase = true;
-                    }
 
-                }
-                if (IsPlaylistToBeDatabase)
-                {
-                    MessageBox.Show("this playlist to be in database");
-                }
-                else
-                {
-                    Context.Playlists.Add(playlist);
-                    Context.SaveChanges();
-                    MessageBox.Show("Playlist add");
-                }
-              
             }
             else
             {
-                MessageBox.Show("Enter corect login or password");
+                MessageBox.Show("Enter corect name");
                
             }
         }
