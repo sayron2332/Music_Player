@@ -23,21 +23,31 @@ namespace Music_Player
     public partial class MusicPlayer : Window
     {
         ViewModel viewModel;
-        User User;
-        public MusicPlayer(User user)
+        User user;
+        public MusicPlayer(User User)
         {
             InitializeComponent();
-            User = user;
+           
             viewModel = ViewModel.Initialize();
             this.DataContext = viewModel;
-            MessageBox.Show(viewModel.GetHashCode().ToString());
+            user = User;
+
+
+           
            
         }
 
         private void Click_btnAddPlaylist(object sender, RoutedEventArgs e)
         {
-            AddPlaylist playlist = new AddPlaylist(User);
-            playlist.Show();
+            
+            AddPlaylist playlist = new AddPlaylist(user);
+            this.Close();
+            playlist.ShowDialog();
+           
+         
+           
         }
+
+      
     }
 }

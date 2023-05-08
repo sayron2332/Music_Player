@@ -32,7 +32,7 @@ namespace Music_Player
             dbContext = MusicPlayerDbContext.Initialize();
             viewModel = ViewModel.Initialize();
             this.DataContext = viewModel;
-            MessageBox.Show(viewModel.GetHashCode().ToString());
+        
 
 
 
@@ -72,7 +72,7 @@ namespace Music_Player
             User User = dbContext.Users.FirstOrDefault(u => u.Login == viewModel.Login);
             if (User != null && User.Password == viewModel.Password)
             {
-               
+                viewModel.setUser(User);
                 MusicPlayer music = new MusicPlayer(User);
                 music.Show();
                 this.Close();

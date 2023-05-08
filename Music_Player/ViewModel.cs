@@ -20,7 +20,12 @@ namespace Music_Player
         private static ViewModel Model = null;
         MusicPlayerDbContext context;
 
-
+        User user;
+        public void setUser(User User)
+        {
+            user = User;
+        }
+      
         public static ViewModel Initialize()
         {
             if (Model == null)
@@ -35,20 +40,26 @@ namespace Music_Player
         
         
         }
+
+       
+       
         protected ViewModel()
         {
+
             context = MusicPlayerDbContext.Initialize();
-            playlists = new ObservableCollection<Playlist>(context.Playlists.ToArray());
-           
-            user = new ObservableCollection<User>(context.Users.ToArray());
-            
+
+            playlists = new ObservableCollection<Playlist>(context.Playlists
+                   .ToArray());
+                  
+            users = new ObservableCollection<User>(context.Users.ToArray());
             tracks = new ObservableCollection<Track>(context.Tracks.ToArray());
         }
 
    
         private ObservableCollection<Playlist> playlists;
+      
         private ObservableCollection<Track> tracks;
-        private ObservableCollection<User> user;
+        private ObservableCollection<User> users;
         public string Login { get; set; }
         public double slVolume { get; set; }
         public string PlaylistName { get; set; }
@@ -56,7 +67,7 @@ namespace Music_Player
         public string txtTrackName { get; set; }
         public string txtAvtorName { get; set; }
         public string Password { get; set; }
-        public IEnumerable<Playlist> Playlists => playlists;
+        public IEnumerable<Playlist> Playlists => playlists.Where(p => p.UserId == user.Id);
         public IEnumerable<Track> Tracks => tracks;
         public void AddTrack(Track tr)
         {
@@ -68,7 +79,7 @@ namespace Music_Player
         }
         public void AddUser(User us)
         {
-            user.Add(us);
+            users.Add(us);
         }
 
     }
