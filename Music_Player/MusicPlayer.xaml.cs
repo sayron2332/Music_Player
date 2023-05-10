@@ -26,11 +26,11 @@ namespace Music_Player
         User user;
         public MusicPlayer(User User)
         {
-            InitializeComponent();
-           
-            viewModel = ViewModel.Initialize();
-            this.DataContext = viewModel;
             user = User;
+            InitializeComponent();
+            viewModel = ViewModel.Initialize(User);
+            this.DataContext = viewModel;
+        
 
 
            
@@ -41,7 +41,6 @@ namespace Music_Player
         {
             
             AddPlaylist playlist = new AddPlaylist(user);
-            this.Close();
             playlist.ShowDialog();
            
          

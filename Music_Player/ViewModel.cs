@@ -17,6 +17,7 @@ namespace Music_Player
     [AddINotifyPropertyChangedInterface]
     public class ViewModel
     {
+
         private static ViewModel Model = null;
         MusicPlayerDbContext context;
 
@@ -25,37 +26,38 @@ namespace Music_Player
         {
             user = User;
         }
-      
-        public static ViewModel Initialize()
+
+        public static ViewModel Initialize(User user)
         {
             if (Model == null)
             {
-                Model = new ViewModel();
+                Model = new ViewModel(user);
                 return Model;
             }
             else
             {
                 return Model;
             }
-        
-        
+
+
         }
 
-       
-       
-        protected ViewModel()
-        {
 
-            context = MusicPlayerDbContext.Initialize();
+
+        protected ViewModel(User User)
+        {
+            user = User;
+            context = new MusicPlayerDbContext();
 
             playlists = new ObservableCollection<Playlist>(context.Playlists
-                   .ToArray());
-                  
+                .Where(p => p.UserId == user.Id)
+                .ToArray());
+
             users = new ObservableCollection<User>(context.Users.ToArray());
             tracks = new ObservableCollection<Track>(context.Tracks.ToArray());
         }
 
-   
+
         private ObservableCollection<Playlist> playlists;
       
         private ObservableCollection<Track> tracks;
@@ -67,7 +69,7 @@ namespace Music_Player
         public string txtTrackName { get; set; }
         public string txtAvtorName { get; set; }
         public string Password { get; set; }
-        public IEnumerable<Playlist> Playlists => playlists.Where(p => p.UserId == user.Id);
+        public IEnumerable<Playlist> Playlists => playlists;
         public IEnumerable<Track> Tracks => tracks;
         public void AddTrack(Track tr)
         {

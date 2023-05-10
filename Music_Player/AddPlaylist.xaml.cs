@@ -24,16 +24,17 @@ namespace Music_Player
     {
         
         ViewModel model;
-        MusicPlayerDbContext Context;
+      
         User User;
     
         public AddPlaylist(User user)
         {
+            User = user;
             InitializeComponent();
            
-            Context = MusicPlayerDbContext.Initialize();
-            model = ViewModel.Initialize();
-            User = user;
+           
+            model = ViewModel.Initialize(User);
+           
             this.DataContext = model;
 
         }
@@ -46,12 +47,20 @@ namespace Music_Player
                 Playlist playlist = new Playlist();
                 playlist.Name = model.PlaylistName;
                 playlist.UserId = User.Id;
-                Context.Playlists.Add(playlist);
-                Context.SaveChanges();
-                MessageBox.Show("Playlist add");
-                MusicPlayer ms = new MusicPlayer(User);
-                this.Close();
-                ms.Show();
+                using (MusicPlayerDbContext Context = new MusicPlayerDbContext())
+                {
+                    model.AddPlaylist(playlist);
+                    Context.Playlists.Add(playlist);
+                    Context.SaveChanges();
+                    MessageBox.Show("Playlist add");
+                    this.Close();
+                    model.PlaylistName = "";
+
+                }
+               
+             
+          
+            
              
                 
 

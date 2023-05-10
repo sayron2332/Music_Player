@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,11 +27,12 @@ namespace Music_Player
     {
         ViewModel viewModel;
         MusicPlayerDbContext dbContext;
+        public User StaticUser;
         public MainWindow()
         {
             InitializeComponent();
-            dbContext = MusicPlayerDbContext.Initialize();
-            viewModel = ViewModel.Initialize();
+            dbContext = new MusicPlayerDbContext();
+          
             this.DataContext = viewModel;
         
 
@@ -40,11 +42,11 @@ namespace Music_Player
 
         private void click_btnRegister(object sender, RoutedEventArgs e)
         {
-            if (viewModel.Login != " " && !String.IsNullOrWhiteSpace(viewModel.Login) && viewModel.Password != " " && !String.IsNullOrWhiteSpace(viewModel.Password))
+            if (txtLogin.Text != " " && !String.IsNullOrWhiteSpace(txtLogin.Text) && txtPassword.Text != " " && !String.IsNullOrWhiteSpace(txtPassword.Text))
             {
                 User user = new User();
-                user.Login = viewModel.Login;
-                user.Password = viewModel.Password;
+                user.Login = txtLogin.Text;
+                user.Password = txtPassword.Text;
 
                 User userForDB = dbContext.Users.FirstOrDefault(u  => u.Login == user.Login);
                 if (userForDB != null && userForDB.Password == user.Password)
@@ -69,11 +71,13 @@ namespace Music_Player
 
         private void click_btnLogin(object sender, RoutedEventArgs e)
         {
-            User User = dbContext.Users.FirstOrDefault(u => u.Login == viewModel.Login);
-            if (User != null && User.Password == viewModel.Password)
+
+         
+            StaticUser = dbContext.Users.FirstOrDefault(u => u.Login == txtLogin.Text);
+            if (StaticUser != null && StaticUser.Password == txtPassword.Text)
             {
-                viewModel.setUser(User);
-                MusicPlayer music = new MusicPlayer(User);
+                viewModel = ViewModel.Initialize(StaticUser);
+                MusicPlayer music = new MusicPlayer(StaticUser);
                 music.Show();
                 this.Close();
             }
@@ -83,8 +87,8 @@ namespace Music_Player
             }
           
 
-          
-            
+
+
         }
     }
 }
