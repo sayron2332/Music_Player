@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_acces.Migrations
 {
     [DbContext(typeof(MusicPlayerDbContext))]
-    [Migration("20230512114941_Initial")]
+    [Migration("20230512154922_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,11 +65,16 @@ namespace Data_acces.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("PlaylistsId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Source")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PlaylistsId");
 
                     b.ToTable("Tracks");
                 });
@@ -95,21 +100,6 @@ namespace Data_acces.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("PlaylistTrack", b =>
-                {
-                    b.Property<int>("PlaylistsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TracksId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PlaylistsId", "TracksId");
-
-                    b.HasIndex("TracksId");
-
-                    b.ToTable("PlaylistTrack");
-                });
-
             modelBuilder.Entity("Data_acces.Models.Playlist", b =>
                 {
                     b.HasOne("Data_acces.Models.User", "User")
@@ -121,19 +111,18 @@ namespace Data_acces.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("PlaylistTrack", b =>
+            modelBuilder.Entity("Data_acces.Models.Track", b =>
                 {
-                    b.HasOne("Data_acces.Models.Playlist", null)
-                        .WithMany()
-                        .HasForeignKey("PlaylistsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("Data_acces.Models.Playlist", "Playlists")
+                        .WithMany("Tracks")
+                        .HasForeignKey("PlaylistsId");
 
-                    b.HasOne("Data_acces.Models.Track", null)
-                        .WithMany()
-                        .HasForeignKey("TracksId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Playlists");
+                });
+
+            modelBuilder.Entity("Data_acces.Models.Playlist", b =>
+                {
+                    b.Navigation("Tracks");
                 });
 
             modelBuilder.Entity("Data_acces.Models.User", b =>

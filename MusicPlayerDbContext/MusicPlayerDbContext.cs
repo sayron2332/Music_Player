@@ -30,7 +30,7 @@ namespace Data_acces
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Track>()
-          .HasMany(u => u.Playlists)
+          .HasOne(u => u.Playlists)
           .WithMany(a => a.Tracks);
 
             modelBuilder.Entity<User>()

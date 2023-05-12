@@ -10,22 +10,6 @@ namespace Data_acces.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Tracks",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Source = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Tracks", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -60,27 +44,25 @@ namespace Data_acces.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PlaylistTrack",
+                name: "Tracks",
                 columns: table => new
                 {
-                    PlaylistsId = table.Column<int>(type: "int", nullable: false),
-                    TracksId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Source = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PlaylistsId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PlaylistTrack", x => new { x.PlaylistsId, x.TracksId });
+                    table.PrimaryKey("PK_Tracks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PlaylistTrack_Playlists_PlaylistsId",
+                        name: "FK_Tracks_Playlists_PlaylistsId",
                         column: x => x.PlaylistsId,
                         principalTable: "Playlists",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_PlaylistTrack_Tracks_TracksId",
-                        column: x => x.TracksId,
-                        principalTable: "Tracks",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -89,21 +71,18 @@ namespace Data_acces.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PlaylistTrack_TracksId",
-                table: "PlaylistTrack",
-                column: "TracksId");
+                name: "IX_Tracks_PlaylistsId",
+                table: "Tracks",
+                column: "PlaylistsId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "PlaylistTrack");
+                name: "Tracks");
 
             migrationBuilder.DropTable(
                 name: "Playlists");
-
-            migrationBuilder.DropTable(
-                name: "Tracks");
 
             migrationBuilder.DropTable(
                 name: "Users");

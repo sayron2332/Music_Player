@@ -118,12 +118,12 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+               
             </Grid.ColumnDefinitions>
             <TextBlock HorizontalAlignment="Center" Grid.Column="0" FontSize="17" Padding="10"  VerticalAlignment="Bottom" Foreground="GhostWhite">Назва</TextBlock>
             <TextBlock HorizontalAlignment="Center" Grid.Column="1" FontSize="17" Padding="10"  VerticalAlignment="Bottom" Foreground="GhostWhite">Автор</TextBlock>
             <TextBlock HorizontalAlignment="Center" Grid.Column="2" FontSize="17" Padding="10"   VerticalAlignment="Bottom" Foreground="GhostWhite">Дата</TextBlock>
-            <TextBlock  HorizontalAlignment="Center" Grid.Column="3" FontSize="17" Padding="10"   VerticalAlignment="Bottom" Foreground="GhostWhite">Час</TextBlock>
+          
         </Grid>
 
         <Grid DockPanel.Dock="Bottom">
@@ -203,8 +203,35 @@
         </Grid>
 
 
-        <DockPanel MinHeight="315px" DockPanel.Dock="Bottom">
-            <ListBox Background="SlateGray" Opacity="0.5" ></ListBox>
+        <DockPanel MinHeight="315px" DockPanel.Dock="Bottom" >
+            <ListBox Background="SlateGray" Opacity="0.5" ItemsSource="{Binding Tracks}" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock  HorizontalAlignment="Center" Grid.Column="0" Text="{Binding Name}"
+                                       Foreground="White" FontWeight="Bold"
+                                       TextTrimming="CharacterEllipsis"
+                            ></TextBlock>
+                            <TextBlock  HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Author}"
+                                       Foreground="White"  FontWeight="Bold"
+                                       TextTrimming="CharacterEllipsis"
+                            ></TextBlock>
+
+                            <TextBlock  HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Date}"
+                                       Foreground="White"  FontWeight="Bold"
+                                       TextTrimming="CharacterEllipsis"
+                            ></TextBlock>
+                        </Grid>
+                          
+                      
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </DockPanel>
 
     </DockPanel>
