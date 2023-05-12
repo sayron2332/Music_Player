@@ -12,6 +12,7 @@ namespace Data_acces.Models
         public string Name { get; set; }
         public string Author { get; set; }
         public string Source { get; set; }
+        public DateTime Date { get; set; }
         public IEnumerable<Playlist> Playlists { get; set; }  
 
 

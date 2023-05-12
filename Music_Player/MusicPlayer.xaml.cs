@@ -1,7 +1,10 @@
 ﻿using Data_acces;
 using Data_acces.Models;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace Music_Player
 {
@@ -47,6 +51,16 @@ namespace Music_Player
            
         }
 
-      
+        private void Click_btnAddTrack(object sender, RoutedEventArgs e)
+        {
+
+            AddTrack Track = new AddTrack(user);
+            Track.ShowDialog();
+
+
+
+
+        }
+
     }
 }

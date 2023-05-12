@@ -12,9 +12,6 @@ namespace Data_acces
 {
     public class MusicPlayerDbContext : DbContext
     {
-     
-
-       
         public DbSet<Track> Tracks { get; set; }
         public DbSet<Playlist> Playlists { get; set; }
         public DbSet<User> Users { get; set; }
