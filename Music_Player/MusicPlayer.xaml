@@ -113,18 +113,7 @@
             </ListBox>
         </DockPanel>
 
-        <Grid DockPanel.Dock="Top">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="0.5*"></ColumnDefinition>
-               
-            </Grid.ColumnDefinitions>
-            <TextBlock HorizontalAlignment="Center" Grid.Column="0" FontSize="17" Padding="10"  VerticalAlignment="Bottom" Foreground="GhostWhite">Назва</TextBlock>
-            <TextBlock HorizontalAlignment="Center" Grid.Column="1" FontSize="17" Padding="10"  VerticalAlignment="Bottom" Foreground="GhostWhite">Автор</TextBlock>
-            <TextBlock HorizontalAlignment="Center" Grid.Column="2" FontSize="17" Padding="10"   VerticalAlignment="Bottom" Foreground="GhostWhite">Дата</TextBlock>
-          
-        </Grid>
+        
 
         <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>
@@ -204,34 +193,16 @@
 
 
         <DockPanel MinHeight="315px" DockPanel.Dock="Bottom" >
-            <ListBox Background="SlateGray" Opacity="0.5" ItemsSource="{Binding Tracks}" >
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock  HorizontalAlignment="Center" Grid.Column="0" Text="{Binding Name}"
-                                       Foreground="White" FontWeight="Bold"
-                                       TextTrimming="CharacterEllipsis"
-                            ></TextBlock>
-                            <TextBlock  HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Author}"
-                                       Foreground="White"  FontWeight="Bold"
-                                       TextTrimming="CharacterEllipsis"
-                            ></TextBlock>
+            <DataGrid  IsReadOnly="True" Background="SlateGray" Opacity="0.5" Name="DG1" ItemsSource="{Binding Tracks}" AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="17" Header="Name" Width="1*"  Binding="{Binding Name}"/>
+                    <DataGridTextColumn FontSize="17" Header="Author"  Width="1*" Binding="{Binding Author}" />
+                   
+                    <DataGridTextColumn FontSize="17" Header="Date"  Width="0.5*" Binding="{Binding Date}" />
 
-                            <TextBlock  HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Date}"
-                                       Foreground="White"  FontWeight="Bold"
-                                       TextTrimming="CharacterEllipsis"
-                            ></TextBlock>
-                        </Grid>
-                          
-                      
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </DataGrid.Columns>
+            </DataGrid>
+           
         </DockPanel>
 
     </DockPanel>
