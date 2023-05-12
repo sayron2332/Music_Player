@@ -52,8 +52,10 @@ namespace Music_Player
 
         private void Click_btnAddTrack(object sender, RoutedEventArgs e)
         {
-            if (Model.Source != null)
+            if (String.IsNullOrEmpty(Model.Source) && String.IsNullOrEmpty(Model.TrackName) && String.IsNullOrEmpty(Model.AvtorName))
             {
+              
+               
                 string Destination = "Music\\";
                 
                 string destFilePath = Path.Combine(Destination, Path.GetFileName(Model.TrackName + ".mp3"));
@@ -63,6 +65,8 @@ namespace Music_Player
                 track.Source = destFilePath;
                 track.Name = Model.TrackName;
                 track.Author = Model.AvtorName;
+                
+
 
                 using (MusicPlayerDbContext Context = new MusicPlayerDbContext())
                 {
@@ -78,9 +82,9 @@ namespace Music_Player
                         Context.SaveChanges();
                         MessageBox.Show("Track add");
                         this.Close();
-                        Model.AvtorName = "";
-                        Model.TrackName = "";
-                        Model.Source = "";
+                        Model.AvtorName = null;
+                        Model.TrackName = null;
+                        Model.Source = null;
                     }
                 
 
@@ -88,7 +92,7 @@ namespace Music_Player
             }
             else
             {
-                MessageBox.Show("Enter Source");
+                MessageBox.Show("Enter full property");
             }
            
         }
