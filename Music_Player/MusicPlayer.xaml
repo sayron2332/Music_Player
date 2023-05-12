@@ -88,11 +88,11 @@
         <DockPanel LastChildFill="False" DockPanel.Dock="Top">
             <Label Margin="15" Foreground="Wheat" FontSize="30">SayDaf Sound</Label>
             <Button Background="#FF151313" FontSize="14" DockPanel.Dock="Right" Width="115" Height="30" Foreground="Wheat" Margin="15">Пошук</Button>
-            <TextBox DockPanel.Dock="Right" Width="150" Height="30"></TextBox>
+            <TextBox VerticalContentAlignment="Center" DockPanel.Dock="Right" Width="150" Height="30"></TextBox>
         </DockPanel>
         <DockPanel  DockPanel.Dock="left">
             <Button Padding="10" FontSize="16" Foreground="Wheat" Background="DarkSalmon"   DockPanel.Dock="Top" Click="Click_btnAddPlaylist">Додати плейлист</Button>
-            <Button Padding="10" FontSize="16" Foreground="Wheat" Background="Crimson"   DockPanel.Dock="Top">Додати трек</Button>
+            <Button Padding="10" FontSize="16" Foreground="Wheat" Background="Crimson"   DockPanel.Dock="Top" Click="Click_btnAddTrack">Додати трек</Button>
             <Label DockPanel.Dock="Top" Margin="15" Foreground="Wheat" FontSize="18">Ваші плейлісти</Label>
 
 

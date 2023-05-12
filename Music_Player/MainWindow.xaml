@@ -14,10 +14,10 @@
             <Label Content="SayDaf" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <Separator></Separator>
             <Label Content="Username" Foreground="White"/>
-            <TextBox Name="txtLogin" Text="{Binding Login}"  Background="#545d6a" Foreground="White" FontSize="18"/>
+            <TextBox Name="txtLogin"   Background="#545d6a" Foreground="White" FontSize="18"/>
             <Label Content="Password" Foreground="White"/>
             
-            <TextBox Name="txtPassword" Text="{Binding Password}" Background="#545d6a" Foreground="White" FontSize="18">
+            <TextBox Name="txtPassword"  Background="#545d6a" Foreground="White" FontSize="18">
                 
             </TextBox>
             

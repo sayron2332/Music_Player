@@ -1,0 +1,36 @@
+﻿<Window x:Class="Music_Player.AddTrack"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Music_Player"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:ViewModel}"
+        Title="AddTrack"  MinHeight="450" MaxHeight="450" MinWidth="450" MaxWidth="450">
+
+
+    <Border Background="#000676" CornerRadius="0" Margin="0">
+        <StackPanel Margin="20">
+            <Label Content="Track" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+            <Separator></Separator>
+            <Label FontSize="16" Margin="0 10 0 0" Content="Name" Foreground="White"/>
+            <TextBox Text="{Binding TrackName}" Background="#f6d863" Foreground="Black" FontSize="18"/>
+            <Label FontSize="16" Margin="0 10 0 0" Content="Author" Foreground="White"/>
+            <TextBox Text="{Binding AvtorName}" Background="#b47cd6" Foreground="Black" FontSize="18"/>
+            <Label FontSize="16" Margin="0 10 0 0" Content="Sourse" Foreground="White"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox IsReadOnly="True" Grid.Column="0" Margin="0, 0,50,0"  Text="{Binding Source}" Background="#74ef87" Foreground="Black" FontSize="18"/>
+                <Button Grid.Column="1"  Content="Enter Source"  Background="#74ef87" Foreground="Black" FontSize="18" Click="Click_btnEnterTrack"/>
+            </Grid>
+
+
+            <Button Content="Add" Margin="60 50 60 10" Background="#4337a5" Foreground="White" FontSize="18" Click="Click_btnAddTrack"/>
+
+        </StackPanel>
+    </Border>
+
+</Window>

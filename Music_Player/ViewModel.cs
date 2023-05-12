@@ -62,13 +62,13 @@ namespace Music_Player
       
         private ObservableCollection<Track> tracks;
         private ObservableCollection<User> users;
-        public string Login { get; set; }
+   
         public double slVolume { get; set; }
         public string PlaylistName { get; set; }
+        public string TrackName { get; set; }
+        public string AvtorName { get; set; }
+        public string Source { get; set; }
         public double slLentghTrack { get; set; }
-        public string txtTrackName { get; set; }
-        public string txtAvtorName { get; set; }
-        public string Password { get; set; }
         public IEnumerable<Playlist> Playlists => playlists;
         public IEnumerable<Track> Tracks => tracks;
         public void AddTrack(Track tr)
