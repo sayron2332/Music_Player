@@ -52,7 +52,7 @@ namespace Music_Player
 
         private void Click_btnAddTrack(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrEmpty(Model.Source) && String.IsNullOrEmpty(Model.TrackName) && String.IsNullOrEmpty(Model.AvtorName))
+            if (!string.IsNullOrEmpty(Model.Source) && !string.IsNullOrEmpty(Model.TrackName) && !string.IsNullOrEmpty(Model.AvtorName))
             {
               
                
@@ -65,7 +65,7 @@ namespace Music_Player
                 track.Source = destFilePath;
                 track.Name = Model.TrackName;
                 track.Author = Model.AvtorName;
-                
+                track.Date = DateTime.Now;
 
 
                 using (MusicPlayerDbContext Context = new MusicPlayerDbContext())

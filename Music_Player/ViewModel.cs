@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Data_acces;
-using Data_acces.Migrations;
+
 using Data_acces.Models;
 using Microsoft.EntityFrameworkCore;
 using PropertyChanged;
