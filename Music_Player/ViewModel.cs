@@ -69,6 +69,11 @@ namespace Music_Player
         public double slVolume { get; set; }
         public string PlaylistName { get; set; }
         public string TrackName { get; set; }
+        public string txtTrackName { get; set; }
+
+        public string sourceImg { get; set; }
+
+        public string txtAvtorName { get; set; }
         public string AvtorName { get; set; }
         public string Source { get; set; }
         public double slLentghTrack { get; set; }
