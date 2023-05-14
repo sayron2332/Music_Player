@@ -54,9 +54,9 @@ namespace Music_Player
         {
             if (!string.IsNullOrEmpty(Model.Source) && !string.IsNullOrEmpty(Model.TrackName) && !string.IsNullOrEmpty(Model.AvtorName))
             {
-              
-               
-                string Destination = "Music\\";
+                string workingDirectory = Environment.CurrentDirectory;
+                string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.Parent.FullName;
+                string Destination = projectDirectory + "\\MusicPlayerDbContext\\Music\\";
                
              
                     string destFilePath = Path.Combine(Destination, Path.GetFileName(Model.TrackName + ".mp3"));
