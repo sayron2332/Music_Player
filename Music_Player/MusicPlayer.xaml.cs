@@ -114,6 +114,7 @@ namespace Music_Player
                         Name = trackWithGrid.Name,
                         Author = trackWithGrid.Author,
                         Source = trackWithGrid.Source,
+                        Date = trackWithGrid.Date,
                         PlaylistsId = playlist.Id,
 
                     };
