@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:Music_Player"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance local:ViewModel}"
-        Title="MusicPlayer" Height="650" Width="1200" MinHeight="671" MinWidth="1200" Loaded="Window_Loaded">
-    
+        Title="MusicPlayer" Height="650" Width="1300" MinHeight="671" MinWidth="1000" Loaded="Window_Loaded">
+
 
     <Window.Resources>
 
@@ -31,7 +31,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="RepeatButton">
-                        <Border SnapsToDevicePixels="True" Background="Green"  BorderThickness="1"  Height="6"/>
+                        <Border SnapsToDevicePixels="True" Background="#FFB3B2B2" BorderThickness="1"  Height="6"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -84,69 +84,114 @@
         </Style>
     </Window.Resources>
 
-    <DockPanel Background="#FF151313" LastChildFill="true">
+    <DockPanel Background="#FF0A0A0A" LastChildFill="true">
         <DockPanel LastChildFill="False" DockPanel.Dock="Top">
-       
- 
-          
-            <Label Margin="15" Foreground="Wheat" FontSize="30">SayDaf Sound</Label>
-            <Button Background="#FF151313" FontSize="14" DockPanel.Dock="Right" Width="115" Height="30" Foreground="Wheat" Margin="15" Click="Button_Click">Пошук</Button>
+
+
+
+            <Label Margin="15" Foreground="#e8c6a0" FontSize="30">SayDaf Sound</Label>
+            <Button Background="#FF151313" FontSize="14" DockPanel.Dock="Right" Width="115" Height="30" Foreground="#FFB3B2B2" Margin="20" Click="Button_Click">Пошук</Button>
             <TextBox Text="{Binding FindNameTrack}" VerticalContentAlignment="Center" DockPanel.Dock="Right" Width="150" Height="30"></TextBox>
         </DockPanel>
-        <DockPanel  DockPanel.Dock="left">
-            <Button Padding="10" FontSize="16" Foreground="Wheat" Background="DarkSalmon"   DockPanel.Dock="Top" Click="Click_btnAddPlaylist">Додати плейлист</Button>
-            <Button Padding="10" FontSize="16" Foreground="Wheat" Background="#FFEF752E"   DockPanel.Dock="Top" Click="Click_btnAddTrackToPlaylist" >Додати Трек в плейлист</Button>
-            <Button Padding="10" FontSize="16" Foreground="Wheat" Background="Crimson"   DockPanel.Dock="Top" Click="Click_btnAddTrack">Додати трек</Button>
-            <Label DockPanel.Dock="Top" Margin="15" Foreground="Wheat" FontSize="18">Ваші плейлісти</Label>
+        <DockPanel  DockPanel.Dock="left" >
+            
+            <Border Margin="20,0,0,10" DockPanel.Dock="Top" CornerRadius="10" Padding="10" Background="#FF151313">
+                <StackPanel>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="1" DockPanel.Dock="Right" FontSize="16" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313" Margin="0,10,30,10"  Click="Click_btnAddTrack">Додати трек</Button>
+                        <Image Grid.Column="0"   Height="20" DockPanel.Dock="Left" HorizontalAlignment="Center"   Source="\ui-img\AddMusic.png"></Image>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="1" Padding="10" FontSize="16" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313" DockPanel.Dock="Top" Click="Click_btnAddPlaylist">Додати плейлист</Button>
+                        <Image Grid.Column="0"   Height="20" DockPanel.Dock="Left" HorizontalAlignment="Center"   Source="\ui-img\AddPlaylist.png"></Image>
+                    </Grid>
 
 
-            <Image DockPanel.Dock="Bottom" Height="195" Source="/ui-img/Sound.png" ></Image>
 
-            <ListBox Name="lsPlaylist" ItemsSource="{Binding Playlists}" Foreground="White" DockPanel.Dock="Top" Background="#FF151313">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <DockPanel>
-                            <TextBlock Text="{Binding Name}"
-                                       MaxWidth="150" FontWeight="Bold"
-                                       TextTrimming="CharacterEllipsis"
-                            ></TextBlock>
+                
+                </StackPanel>
+            
+            </Border >
 
-                        </DockPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </DockPanel>
 
-        
+            <DockPanel DockPanel.Dock="Bottom">
+                
 
-        <Grid DockPanel.Dock="Bottom">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                <ColumnDefinition Width="0.5*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <DockPanel LastChildFill="False" Height="110" DockPanel.Dock="Bottom">
-
-                <Grid DockPanel.Dock="Left">
+                <Image DockPanel.Dock="Left" HorizontalAlignment="Left" Height="110" Margin="35,10,10,10"  Source="\ui-img\Sound.png"></Image>
+                <Grid DockPanel.Dock="Right">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
+                        <RowDefinition ></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <!--НАЗВА ТРЕКУ-->
-                    <TextBlock Text="{Binding txtTrackName}"  VerticalAlignment="Center" Margin="10" FontSize="18" Foreground="White" Grid.Column="0" Grid.Row="0"></TextBlock>
+                    <TextBlock Text="{Binding txtTrackName}"  VerticalAlignment="Center" Margin="10,10,10,0" FontSize="18" Foreground="White" Grid.Column="0" Grid.Row="0"></TextBlock>
                     <!--автор-->
-                    <TextBlock Text="{Binding txtAvtorName}"  VerticalAlignment="Center" Margin="12" FontSize="16" Foreground="White" Grid.Column="0" Grid.Row="1"></TextBlock>
+                    <TextBlock Text="{Binding txtAvtorName}" VerticalAlignment="Top" Margin="10,0,0,50" FontSize="16" Foreground="#FFB3B2B2" Grid.Column="0" Grid.Row="1"></TextBlock>
                 </Grid>
+            </DockPanel>
+            <Border Margin="20,0,0,0" DockPanel.Dock="Top" CornerRadius="10" Padding="10" Background="#FF151313">
+                <DockPanel >
+
+                    <Button Padding="10" FontSize="16" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313" Margin="0,0,0,10" DockPanel.Dock="Top" Click="Click_btnAddTrackToPlaylist" >Додати Трек в плейлист</Button>
+                    <Label DockPanel.Dock="Top"  HorizontalContentAlignment="Center" Foreground="#FFB3B2B2" FontSize="17">Ваші плейлісти</Label>
+                  
+                    <ListBox DockPanel.Dock="Top" Name="lsPlaylist" BorderBrush="#FF151313"  ItemsSource="{Binding Playlists}" Foreground="White" Background="#FF151313">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <TextBlock Text="{Binding Name}"
+                                       MaxWidth="150" FontWeight="Bold"
+                                       TextTrimming="CharacterEllipsis"
+                            ></TextBlock>
+
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+              
+
+            </Border>
+
+
+
+
+           
+        </DockPanel>
+
+     
+     
+
+
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+               
+               
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <DockPanel LastChildFill="False" Height="110">
+
+               
 
 
 
             </DockPanel>
-            <StackPanel VerticalAlignment="Center" Margin="0 20 0 0" Grid.Column="1">
+            <StackPanel VerticalAlignment="Top" Margin="20">
                 <DockPanel HorizontalAlignment="Center">
-                    <Button  Margin="0 0 15 0" BorderBrush="#FF151313"  Background="#FF151313" Width="35" Height="35">
+                    <Button  Margin="0 0 15 0" BorderBrush="#FF0A0A0A"  Background="#FF0A0A0A" Width="35" Height="35">
                         <Image Source="\ui-img\next.png" RenderTransformOrigin="0.5,0.5">
                             <Image.RenderTransform>
                                 <TransformGroup>
@@ -159,11 +204,11 @@
                         </Image>
                     </Button>
 
-                    <Button  BorderBrush="#FF151313"  Background="#FF151313" Width="35" Height="35" Click="PlayMuisc">
+                    <Button  BorderBrush="#FF0A0A0A"  Background="#FF0A0A0A" Width="35" Height="35" Click="PlayMuisc">
                         <Image Source="{Binding sourceImg}"></Image>
                     </Button>
 
-                    <Button Margin="15 0 0 0"   BorderBrush="#FF151313"  Background="#FF151313" Width="35" Height="35">
+                    <Button Margin="15 0 0 0"   BorderBrush="#FF0A0A0A"  Background="#FF0A0A0A" Width="35" Height="35">
                         <Image Source="\ui-img\next.png"></Image>
                     </Button>
 
@@ -174,18 +219,11 @@
 
                     <MediaElement MediaOpened="Element_MediaOpened" MediaEnded="Element_MediaEnded" Source="{Binding TrackSourcePlayNow}" Name="myMediaElement" 
                      LoadedBehavior="Manual" UnloadedBehavior="Stop" Stretch="Fill"/>
-                    <Slider Value="{Binding slLentghTrack}" Name="timelineSlider" TickFrequency="1" Style="{StaticResource Horizontal_Slider}" Margin="5" ValueChanged="SeekToMediaPosition" Width="550" ></Slider>
+                    <Slider Value="{Binding slLentghTrack}" Name="timelineSlider" TickFrequency="1"  Style="{StaticResource Horizontal_Slider}" Margin="5" ValueChanged="SeekToMediaPosition" Width="550" Foreground="#FFD81111" ></Slider>
                 </DockPanel>
             </StackPanel>
 
-
-
-
-
-
-
-
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0" Grid.Column="2">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
 
                 <DockPanel>
                     <Image HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="20" Height="20" Source="\ui-img\volume.png"></Image>
@@ -193,25 +231,26 @@
                 </DockPanel>
             </StackPanel>
 
-
-
-
         </Grid>
 
 
-        <DockPanel MinHeight="315px" DockPanel.Dock="Bottom" >
-            <DataGrid  IsReadOnly="True" Background="SlateGray" Opacity="0.5" Name="DG1" ItemsSource="{Binding TracksToFind}" AutoGenerateColumns="False" >
-                <DataGrid.Columns>
-                    <DataGridTextColumn FontSize="17" Header="Id" Width="0.2*"  Binding="{Binding Id}"/>
-                    <DataGridTextColumn FontSize="17" Header="Name" Width="1*"  Binding="{Binding Name}"/>
-                    <DataGridTextColumn FontSize="17" Header="Author"  Width="1*" Binding="{Binding Author}" />
-                   
-                    <DataGridTextColumn FontSize="17" Header="Date"  Width="0.5*" Binding="{Binding Date}" />
+        <Border Margin="20,0,20,20"  Padding="30"   Background="#FF151313" CornerRadius="15">
 
-                </DataGrid.Columns>
-            </DataGrid>
-           
-        </DockPanel>
+            <DockPanel MinHeight="315px" DockPanel.Dock="Bottom" >
+                <DataGrid BorderBrush="#FF151313"  IsReadOnly="True" Background="#FF151313" Opacity="0.5" Name="DG1" ItemsSource="{Binding TracksToFind}" AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn FontSize="17" Header="Id" Width="0.2*"  Binding="{Binding Id}"/>
+                        <DataGridTextColumn FontSize="17" Header="Name" Width="1*"  Binding="{Binding Name}"/>
+                        <DataGridTextColumn FontSize="17" Header="Author"  Width="1*" Binding="{Binding Author}" />
+
+                        <DataGridTextColumn FontSize="17" Header="Date"  Width="0.5*" Binding="{Binding Date}" />
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </DockPanel>
+        </Border>
+
 
     </DockPanel>
 </Window>

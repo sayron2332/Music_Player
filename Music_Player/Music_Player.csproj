@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ui-img\AddMusic.png" />
+    <None Remove="ui-img\AddPlaylist.png" />
     <None Remove="ui-img\next.png" />
     <None Remove="ui-img\pause.png" />
     <None Remove="ui-img\play.png" />
@@ -28,6 +30,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="ui-img\AddMusic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ui-img\AddPlaylist.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="ui-img\next.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
