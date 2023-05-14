@@ -66,7 +66,7 @@ namespace Music_Player
                 track.Name = Model.TrackName;
                 track.Author = Model.AvtorName;
                 track.Date = DateTime.Now;
-
+           
 
                 using (MusicPlayerDbContext Context = new MusicPlayerDbContext())
                 {

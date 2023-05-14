@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_acces.Migrations
 {
     [DbContext(typeof(MusicPlayerDbContext))]
-    [Migration("20230512154922_Initial")]
+    [Migration("20230514083756_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

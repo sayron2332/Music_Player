@@ -55,6 +55,7 @@ namespace Music_Player
 
             users = new ObservableCollection<User>(context.Users.ToArray());
             tracks = new ObservableCollection<Track>(context.Tracks.ToArray());
+            tracksToFind = new ObservableCollection<Track>();
         }
 
 
@@ -62,7 +63,9 @@ namespace Music_Player
       
         private ObservableCollection<Track> tracks;
         private ObservableCollection<User> users;
-   
+        private ObservableCollection<Track> tracksToFind;
+
+        public string FindNameTrack { get; set; }
         public double slVolume { get; set; }
         public string PlaylistName { get; set; }
         public string TrackName { get; set; }
@@ -71,9 +74,15 @@ namespace Music_Player
         public double slLentghTrack { get; set; }
         public IEnumerable<Playlist> Playlists => playlists;
         public IEnumerable<Track> Tracks => tracks;
+        public IEnumerable<Track> TracksToFind => tracksToFind;
         public void AddTrack(Track tr)
         {
             tracks.Add(tr);
+        }
+        public void TrackToFindAdd(Track tr)
+        {
+            tracksToFind.Add(tr);
+
         }
         public void AddPlaylist(Playlist pl)
         {
@@ -82,6 +91,10 @@ namespace Music_Player
         public void AddUser(User us)
         {
             users.Add(us);
+        }
+        public void TrackToFindClear()
+        {
+            tracksToFind.Clear();
         }
 
     }
