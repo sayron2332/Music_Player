@@ -103,7 +103,7 @@
                             <ColumnDefinition Width="0.2*"></ColumnDefinition>
                             <ColumnDefinition Width="1*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="1" DockPanel.Dock="Right" FontSize="16" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313" Margin="0,10,30,10"  Click="Click_btnAddTrack">Додати трек</Button>
+                        <Button Grid.Column="1" DockPanel.Dock="Right" FontSize="16" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313" Margin="0,10"  Click="Click_btnAddTrack">Додати трек</Button>
                         <Image Grid.Column="0"   Height="20" DockPanel.Dock="Left" HorizontalAlignment="Center"   Source="\ui-img\AddMusic.png"></Image>
                     </Grid>
                     <Grid>
@@ -114,10 +114,18 @@
                         <Button Grid.Column="1" Padding="10" FontSize="16" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313" DockPanel.Dock="Top" Click="Click_btnAddPlaylist">Додати плейлист</Button>
                         <Image Grid.Column="0"   Height="20" DockPanel.Dock="Left" HorizontalAlignment="Center"   Source="\ui-img\AddPlaylist.png"></Image>
                     </Grid>
+                    <Grid DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="1" Padding="10" FontSize="16" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313" Margin="0,0,0,10" DockPanel.Dock="Top" Click="Click_btnAddTrackToPlaylist" >Додати Трек в плейлист</Button>
+                        <Image Grid.Column="0"  Height="20" DockPanel.Dock="Left" HorizontalAlignment="Center"   Source="\ui-img\AddPlaylist.png"></Image>
+                    </Grid>
 
 
 
-                
+
                 </StackPanel>
             
             </Border >
@@ -143,14 +151,7 @@
             </DockPanel>
             <Border Margin="20,0,0,0" DockPanel.Dock="Top" CornerRadius="10" Padding="10" Background="#FF151313">
                 <DockPanel >
-                    <Grid DockPanel.Dock="Top">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="1" Padding="10" FontSize="16" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313" Margin="0,0,0,10" DockPanel.Dock="Top" Click="Click_btnAddTrackToPlaylist" >Додати Трек в плейлист</Button>
-                        <Image Grid.Column="0"  Height="20" DockPanel.Dock="Left" HorizontalAlignment="Center"   Source="\ui-img\AddPlaylist.png"></Image>
-                    </Grid>
+                   
 
                   
                     <Label DockPanel.Dock="Top"  HorizontalContentAlignment="Center" Foreground="#FFB3B2B2" FontSize="17">Ваші плейлісти</Label>
@@ -160,8 +161,8 @@
                             <DataTemplate>
                                 <DockPanel>
                                     <TextBlock Text="{Binding Name}"
-                                       MaxWidth="150" FontWeight="Bold"
-                                       TextTrimming="CharacterEllipsis"
+                                       FontSize="15" FontWeight="Bold"
+                                  
                             ></TextBlock>
 
                                 </DockPanel>
