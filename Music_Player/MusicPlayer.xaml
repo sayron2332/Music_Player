@@ -123,7 +123,7 @@
             </Border >
 
 
-            <DockPanel DockPanel.Dock="Bottom">
+            <DockPanel MinWidth="350" DockPanel.Dock="Bottom">
                 
 
                 <Image DockPanel.Dock="Left" HorizontalAlignment="Left" Height="110" Margin="35,10,10,10"  Source="\ui-img\Sound.png"></Image>
@@ -143,8 +143,16 @@
             </DockPanel>
             <Border Margin="20,0,0,0" DockPanel.Dock="Top" CornerRadius="10" Padding="10" Background="#FF151313">
                 <DockPanel >
+                    <Grid DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="1" Padding="10" FontSize="16" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313" Margin="0,0,0,10" DockPanel.Dock="Top" Click="Click_btnAddTrackToPlaylist" >Додати Трек в плейлист</Button>
+                        <Image Grid.Column="0"  Height="20" DockPanel.Dock="Left" HorizontalAlignment="Center"   Source="\ui-img\AddPlaylist.png"></Image>
+                    </Grid>
 
-                    <Button Padding="10" FontSize="16" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313" Margin="0,0,0,10" DockPanel.Dock="Top" Click="Click_btnAddTrackToPlaylist" >Додати Трек в плейлист</Button>
+                  
                     <Label DockPanel.Dock="Top"  HorizontalContentAlignment="Center" Foreground="#FFB3B2B2" FontSize="17">Ваші плейлісти</Label>
                   
                     <ListBox DockPanel.Dock="Top" Name="lsPlaylist" BorderBrush="#FF151313"  ItemsSource="{Binding Playlists}" Foreground="White" Background="#FF151313">

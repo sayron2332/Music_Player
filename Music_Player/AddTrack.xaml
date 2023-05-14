@@ -23,7 +23,7 @@
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                     <ColumnDefinition Width="0.5*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBox IsReadOnly="True" Grid.Column="0" Margin="0, 0,50,0"  Text="{Binding Source}" Background="#FF151313"  FontSize="18"/>
+                <TextBox IsReadOnly="True" Grid.Column="0" Margin="0, 0,50,0"  Text="{Binding Source}" Background="#FF151313" Foreground="White"  FontSize="18"/>
                 <Button Grid.Column="1"  Content="Enter Source" Background="#FF151313" Foreground="White" FontSize="18" Click="Click_btnEnterTrack"/>
             </Grid>
 
