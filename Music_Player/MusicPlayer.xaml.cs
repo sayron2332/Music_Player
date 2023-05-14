@@ -96,17 +96,35 @@ namespace Music_Player
         {
             if (DG1.SelectedItem != null && lsPlaylist.SelectedItem != null)
             {
-                Track track = DG1.SelectedItem as Track;
+                Track trackWithGrid = DG1.SelectedItem as Track;
                 Playlist playlist = lsPlaylist.SelectedItem as Playlist;
-                using (MusicPlayerDbContext Context = new MusicPlayerDbContext())
+                if (trackWithGrid.PlaylistsId == playlist.Id)
                 {
-                  
-                    Context.Tracks.Remove(track);
-                    track.PlaylistsId = playlist.Id;
-                    Context.Tracks.Add(track);
-                    Context.SaveChanges();
-
+                    MessageBox.Show("this track such alredy this playlist");
                 }
+                else
+                {
+                    Track NewTrack = new Track()
+                    {
+                        Name = trackWithGrid.Name,
+                        Author = trackWithGrid.Author,
+                        Source = trackWithGrid.Source,
+                        PlaylistsId = playlist.Id,
+
+                    };
+
+
+
+                    using (MusicPlayerDbContext Context = new MusicPlayerDbContext())
+                    {
+
+                        Context.Tracks.Remove(trackWithGrid);
+                        Context.Tracks.Add(NewTrack);
+                        Context.SaveChanges();
+
+                    }
+                }
+               
                     
 
             }
@@ -115,6 +133,11 @@ namespace Music_Player
                 MessageBox.Show("Please Enter Track");
             }
           
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateTracksList();
         }
     }
 }
