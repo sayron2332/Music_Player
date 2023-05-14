@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 
 
+
 namespace Music_Player
 {
     /// <summary>
@@ -30,17 +32,18 @@ namespace Music_Player
     {
         ViewModel viewModel;
         User user;
+        SoundPlayer soundPlayer;
+        
+        bool Play = false;
         public MusicPlayer(User User)
         {
             user = User;
             InitializeComponent();
             viewModel = ViewModel.Initialize(User);
             this.DataContext = viewModel;
-        
+            soundPlayer = new SoundPlayer();
+            viewModel.sourceImg = "ui-img/play.png";
 
-
-           
-           
         }
 
         private void Click_btnAddPlaylist(object sender, RoutedEventArgs e)
@@ -135,9 +138,42 @@ namespace Music_Player
           
         }
 
+        private void PlayMuisc(object sender, RoutedEventArgs e)
+        {
+
+            if (DG1.SelectedItem == null)
+            {
+                MessageBox.Show("CHOOSE TRACK!!");
+            }
+
+
+
+            else if(Play == false)
+            {
+                Play = true;
+                Track TrackFromGrid = DG1.SelectedItem as Track;
+                soundPlayer = new System.Media.SoundPlayer(TrackFromGrid.Source);
+                viewModel.txtTrackName = TrackFromGrid.Name;
+                viewModel.txtAvtorName = TrackFromGrid.Author;
+                
+                viewModel.sourceImg = "ui-img/pause.png";
+                soundPlayer.Play();
+                
+            }
+
+            else if (Play == true)
+            {
+                viewModel.sourceImg = "ui-img/play.png";
+                Play = false;
+                soundPlayer.Stop();
+            }
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateTracksList();
         }
+
+        
     }
 }

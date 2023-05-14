@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="ui-img\next.png" />
+    <None Remove="ui-img\pause.png" />
     <None Remove="ui-img\play.png" />
     <None Remove="ui-img\Sound.png" />
     <None Remove="ui-img\volume.png" />
@@ -28,6 +29,9 @@
 
   <ItemGroup>
     <Resource Include="ui-img\next.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ui-img\pause.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="ui-img\play.png">

@@ -57,39 +57,46 @@ namespace Music_Player
               
                
                 string Destination = "Music\\";
-                
-                string destFilePath = Path.Combine(Destination, Path.GetFileName(Model.TrackName + ".mp3"));
-                File.Copy(Model.Source, destFilePath, true);
-
-                Track track = new Track();
-                track.Source = destFilePath;
-                track.Name = Model.TrackName;
-                track.Author = Model.AvtorName;
-                track.Date = DateTime.Now;
-           
-
-                using (MusicPlayerDbContext Context = new MusicPlayerDbContext())
+                if (Model.Source.Contains(".mp3"))
                 {
-                    Track TrackForDB = Context.Tracks.FirstOrDefault(u => u.Name == track.Name);
-                    if (TrackForDB != null && TrackForDB.Name == track.Name)
-                    {
-                        MessageBox.Show("such track already exists");
-
-                    }
-                    else
-                    {
-                        Model.AddTrack(track);
-                        Context.Tracks.Add(track);
-                        Context.SaveChanges();
-                        MessageBox.Show("Track add");
-                        this.Close();
-                        Model.AvtorName = null;
-                        Model.TrackName = null;
-                        Model.Source = null;
-                    }
-                
-
+                    MessageBox.Show("ONLY WAVE FILE!!!!!");
                 }
+                else
+                {
+                    string destFilePath = Path.Combine(Destination, Path.GetFileName(Model.TrackName + ".wav"));
+                    File.Copy(Model.Source, destFilePath, true);
+
+                    Track track = new Track();
+                    track.Source = destFilePath;
+                    track.Name = Model.TrackName;
+                    track.Author = Model.AvtorName;
+                    track.Date = DateTime.Now;
+
+
+                    using (MusicPlayerDbContext Context = new MusicPlayerDbContext())
+                    {
+                        Track TrackForDB = Context.Tracks.FirstOrDefault(u => u.Name == track.Name);
+                        if (TrackForDB != null && TrackForDB.Name == track.Name)
+                        {
+                            MessageBox.Show("such track already exists");
+
+                        }
+                        else
+                        {
+                            Model.AddTrack(track);
+                            Context.Tracks.Add(track);
+                            Context.SaveChanges();
+                            MessageBox.Show("Track add");
+                            this.Close();
+                            Model.AvtorName = null;
+                            Model.TrackName = null;
+                            Model.Source = null;
+                        }
+
+
+                    }
+                }
+                
             }
             else
             {

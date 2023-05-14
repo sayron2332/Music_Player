@@ -133,9 +133,9 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <!--НАЗВА ТРЕКУ-->
-                    <TextBlock Text="{Binding txtTrackName}"  VerticalAlignment="Center" Margin="10" FontSize="18" Foreground="White" Grid.Column="0" Grid.Row="0">Макдак</TextBlock>
+                    <TextBlock Text="{Binding txtTrackName}"  VerticalAlignment="Center" Margin="10" FontSize="18" Foreground="White" Grid.Column="0" Grid.Row="0"></TextBlock>
                     <!--автор-->
-                    <TextBlock Text="{Binding txtAvtorName}"  VerticalAlignment="Center" Margin="12" FontSize="16" Foreground="White" Grid.Column="0" Grid.Row="1">Алина Сексова</TextBlock>
+                    <TextBlock Text="{Binding txtAvtorName}"  VerticalAlignment="Center" Margin="12" FontSize="16" Foreground="White" Grid.Column="0" Grid.Row="1"></TextBlock>
                 </Grid>
 
 
@@ -156,8 +156,8 @@
                         </Image>
                     </Button>
 
-                    <Button  BorderBrush="#FF151313"  Background="#FF151313" Width="35" Height="35">
-                        <Image Source="\ui-img\play.png"></Image>
+                    <Button    BorderBrush="#FF151313"  Background="#FF151313" Width="35" Height="35" Click="PlayMuisc">
+                        <Image Source="{Binding sourceImg}"></Image>
                     </Button>
 
                     <Button Margin="15 0 0 0"   BorderBrush="#FF151313"  Background="#FF151313" Width="35" Height="35">
