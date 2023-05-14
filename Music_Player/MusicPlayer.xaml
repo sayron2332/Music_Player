@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Music_Player"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance local:ViewModel}"
-        Title="MusicPlayer" Height="650" Width="1200" MinHeight="671" MinWidth="1200">
+        Title="MusicPlayer" Height="650" Width="1200" MinHeight="671" MinWidth="1200" Loaded="Window_Loaded">
     
 
     <Window.Resources>
