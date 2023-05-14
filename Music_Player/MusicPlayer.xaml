@@ -97,7 +97,7 @@
             <Label DockPanel.Dock="Top" Margin="15" Foreground="Wheat" FontSize="18">Ваші плейлісти</Label>
 
 
-            <Image DockPanel.Dock="Bottom" Height="166" Source="/e8674191d4568ea1905dcd859987030e.1000x1000x1.jpg" ></Image>
+            <Image DockPanel.Dock="Bottom" Height="195" Source="/ui-img/Sound.png" ></Image>
 
             <ListBox Name="lsPlaylist" ItemsSource="{Binding Playlists}" Foreground="White" DockPanel.Dock="Top" Background="#FF151313">
                 <ListBox.ItemTemplate>
