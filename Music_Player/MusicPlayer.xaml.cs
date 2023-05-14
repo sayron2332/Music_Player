@@ -9,6 +9,7 @@ using System.Linq;
 using System.Media;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,7 +33,7 @@ namespace Music_Player
     {
         ViewModel viewModel;
         User user;
-        SoundPlayer soundPlayer;
+    
         
         bool Play = false;
         public MusicPlayer(User User)
@@ -41,8 +42,9 @@ namespace Music_Player
             InitializeComponent();
             viewModel = ViewModel.Initialize(User);
             this.DataContext = viewModel;
-            soundPlayer = new SoundPlayer();
+          
             viewModel.sourceImg = "ui-img/play.png";
+            viewModel.slVolume = 1;
 
         }
 
@@ -191,9 +193,12 @@ namespace Music_Player
 
             // Overloaded constructor takes the arguments days, hours, minutes, seconds, milliseconds.
             // Create a TimeSpan with miliseconds equal to the slider value.
-            TimeSpan ts = new TimeSpan(0, 0,0,0 ,(int)viewModel.slLentghTrack);
+            TimeSpan ts = new TimeSpan(0, 0,0, 0, (int)viewModel.slLentghTrack);
+            Thread.Sleep(100);
+
             myMediaElement.Position = ts;
-           
+            
+
 
 
         }
