@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Music_Player"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance local:ViewModel}"
-        Title="MusicPlayer" Height="650" Width="1000" MinHeight="671" MinWidth="1000">
+        Title="MusicPlayer" Height="650" Width="1200" MinHeight="671" MinWidth="1200">
     
 
     <Window.Resources>
@@ -87,18 +87,19 @@
     <DockPanel Background="#FF151313" LastChildFill="true">
         <DockPanel LastChildFill="False" DockPanel.Dock="Top">
             <Label Margin="15" Foreground="Wheat" FontSize="30">SayDaf Sound</Label>
-            <Button Background="#FF151313" FontSize="14" DockPanel.Dock="Right" Width="115" Height="30" Foreground="Wheat" Margin="15">Пошук</Button>
-            <TextBox VerticalContentAlignment="Center" DockPanel.Dock="Right" Width="150" Height="30"></TextBox>
+            <Button Background="#FF151313" FontSize="14" DockPanel.Dock="Right" Width="115" Height="30" Foreground="Wheat" Margin="15" Click="Button_Click">Пошук</Button>
+            <TextBox Text="{Binding FindNameTrack}" VerticalContentAlignment="Center" DockPanel.Dock="Right" Width="150" Height="30"></TextBox>
         </DockPanel>
         <DockPanel  DockPanel.Dock="left">
             <Button Padding="10" FontSize="16" Foreground="Wheat" Background="DarkSalmon"   DockPanel.Dock="Top" Click="Click_btnAddPlaylist">Додати плейлист</Button>
+            <Button Padding="10" FontSize="16" Foreground="Wheat" Background="#FFEF752E"   DockPanel.Dock="Top" Click="Click_btnAddTrackToPlaylist" >Додати Трек в плейлист</Button>
             <Button Padding="10" FontSize="16" Foreground="Wheat" Background="Crimson"   DockPanel.Dock="Top" Click="Click_btnAddTrack">Додати трек</Button>
             <Label DockPanel.Dock="Top" Margin="15" Foreground="Wheat" FontSize="18">Ваші плейлісти</Label>
 
 
-            <Image DockPanel.Dock="Bottom" Height="166" Source="/e8674191d4568ea1905dcd859987030e.1000x1000x1.jpg" ></Image>
+            <Image DockPanel.Dock="Bottom" Height="195" Source="/ui-img/Sound.png" ></Image>
 
-            <ListBox ItemsSource="{Binding Playlists}" Foreground="White" DockPanel.Dock="Top" Background="#FF151313">
+            <ListBox Name="lsPlaylist" ItemsSource="{Binding Playlists}" Foreground="White" DockPanel.Dock="Top" Background="#FF151313">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <DockPanel>
@@ -193,8 +194,9 @@
 
 
         <DockPanel MinHeight="315px" DockPanel.Dock="Bottom" >
-            <DataGrid  IsReadOnly="True" Background="SlateGray" Opacity="0.5" Name="DG1" ItemsSource="{Binding Tracks}" AutoGenerateColumns="False" >
+            <DataGrid  IsReadOnly="True" Background="SlateGray" Opacity="0.5" Name="DG1" ItemsSource="{Binding TracksToFind}" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="17" Header="Id" Width="0.2*"  Binding="{Binding Id}"/>
                     <DataGridTextColumn FontSize="17" Header="Name" Width="1*"  Binding="{Binding Name}"/>
                     <DataGridTextColumn FontSize="17" Header="Author"  Width="1*" Binding="{Binding Author}" />
                    

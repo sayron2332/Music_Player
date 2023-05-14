@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="ui-img\next.png" />
     <None Remove="ui-img\play.png" />
+    <None Remove="ui-img\Sound.png" />
     <None Remove="ui-img\volume.png" />
   </ItemGroup>
 
@@ -30,6 +31,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="ui-img\play.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ui-img\Sound.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="ui-img\volume.png">

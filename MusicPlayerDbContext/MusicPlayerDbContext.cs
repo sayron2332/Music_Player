@@ -36,9 +36,16 @@ namespace Data_acces
             modelBuilder.Entity<User>()
                 .HasMany(p => p.Playlists)
                 .WithOne(a => a.User);
+
+         
           
+
         }
-     
+       
+
+
+
+
 
     }
 }
