@@ -9,20 +9,20 @@
         Title="Login"  MinHeight="350" MaxHeight="350" MinWidth="400" MaxWidth="400">
 
 
-    <Border Background="#2e3137" CornerRadius="0" Margin="0">
+    <Border Background="#FF191818" CornerRadius="0" Margin="0">
         <StackPanel Margin="20">
             <Label Content="SayDaf" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <Separator></Separator>
             <Label Content="Username" Foreground="White"/>
-            <TextBox Name="txtLogin"   Background="#545d6a" Foreground="White" FontSize="18"/>
+            <TextBox Name="txtLogin"  Background="#FF151313" Foreground="White" FontSize="18"/>
             <Label Content="Password" Foreground="White"/>
-            
-            <TextBox Name="txtPassword"  Background="#545d6a" Foreground="White" FontSize="18">
+
+            <TextBox Name="txtPassword"  Background="#FF151313" Foreground="White" FontSize="18">
                 
             </TextBox>
-            
-            <Button Content="Login" Margin="60 35 60 10" Background="#545d6a" Foreground="White" FontSize="18" Click="click_btnLogin"/>
-            <Button Content="Registration" Margin="60 0" Background="#545d6a" Foreground="White" FontSize="18" Click="click_btnRegister"/>
+
+            <Button Content="Login" Margin="60 35 60 10" Background="#FF151313" Foreground="White" FontSize="18" Click="click_btnLogin"/>
+            <Button Content="Registration" Margin="60 0" Background="#FF151313" Foreground="White" FontSize="18" Click="click_btnRegister"/>
         </StackPanel>
     </Border>
 

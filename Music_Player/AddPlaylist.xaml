@@ -9,15 +9,15 @@
         Title="AddPlaylist"  MinHeight="300" MaxHeight="300" MinWidth="400" MaxWidth="400">
 
 
-    <Border Background="#FE5F55" CornerRadius="0" Margin="0">
+    <Border Background="#FF191818" CornerRadius="0" Margin="0">
         <StackPanel Margin="20">
             <Label Content="Playlist" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <Separator></Separator>
             <Label FontSize="16" Margin="0 30 0 0" Content="Name" Foreground="White"/>
-            <TextBox Text="{Binding PlaylistName}" Background="#885053" Foreground="White" FontSize="18"/>
+            <TextBox Text="{Binding PlaylistName}"  Background="#FF151313" Foreground="White" FontSize="18"/>
 
 
-            <Button Content="Add" Margin="60 50 60 10" Background="#885053" Foreground="White" FontSize="18" Click="Click_btnAddPlaylist"/>
+            <Button Content="Add" Margin="60 50 60 10"  Background="#FF151313" Foreground="White" FontSize="18" Click="Click_btnAddPlaylist"/>
          
         </StackPanel>
     </Border>
