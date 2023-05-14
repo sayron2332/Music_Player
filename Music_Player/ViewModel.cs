@@ -72,7 +72,7 @@ namespace Music_Player
         public string txtTrackName { get; set; }
 
         public string sourceImg { get; set; }
-
+        public string TrackSourcePlayNow { get; set; }
         public string txtAvtorName { get; set; }
         public string AvtorName { get; set; }
         public string Source { get; set; }

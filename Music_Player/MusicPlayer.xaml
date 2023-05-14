@@ -86,6 +86,9 @@
 
     <DockPanel Background="#FF151313" LastChildFill="true">
         <DockPanel LastChildFill="False" DockPanel.Dock="Top">
+       
+ 
+          
             <Label Margin="15" Foreground="Wheat" FontSize="30">SayDaf Sound</Label>
             <Button Background="#FF151313" FontSize="14" DockPanel.Dock="Right" Width="115" Height="30" Foreground="Wheat" Margin="15" Click="Button_Click">Пошук</Button>
             <TextBox Text="{Binding FindNameTrack}" VerticalContentAlignment="Center" DockPanel.Dock="Right" Width="150" Height="30"></TextBox>
@@ -156,7 +159,7 @@
                         </Image>
                     </Button>
 
-                    <Button    BorderBrush="#FF151313"  Background="#FF151313" Width="35" Height="35" Click="PlayMuisc">
+                    <Button  BorderBrush="#FF151313"  Background="#FF151313" Width="35" Height="35" Click="PlayMuisc">
                         <Image Source="{Binding sourceImg}"></Image>
                     </Button>
 
@@ -168,7 +171,10 @@
 
                 </DockPanel>
                 <DockPanel>
-                    <Slider  TickFrequency="1" Style="{StaticResource Horizontal_Slider}" Margin="15" ></Slider>
+
+                    <MediaElement MediaOpened="Element_MediaOpened" MediaEnded="Element_MediaEnded" Source="{Binding TrackSourcePlayNow}" Name="myMediaElement" 
+                     LoadedBehavior="Manual" UnloadedBehavior="Stop" Stretch="Fill"/>
+                    <Slider Value="{Binding slLentghTrack}" Name="timelineSlider" TickFrequency="1" Style="{StaticResource Horizontal_Slider}" Margin="5" ValueChanged="SeekToMediaPosition" Width="550" ></Slider>
                 </DockPanel>
             </StackPanel>
 
@@ -183,7 +189,7 @@
 
                 <DockPanel>
                     <Image HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="20" Height="20" Source="\ui-img\volume.png"></Image>
-                    <Slider TickFrequency="1" Style="{StaticResource Horizontal_Slider}" Margin="8" ></Slider>
+                    <Slider Value="{Binding slVolume}" ValueChanged="ChangeMediaVolume" TickFrequency="1" Style="{StaticResource Horizontal_Slider}" Margin="8" ></Slider>
                 </DockPanel>
             </StackPanel>
 

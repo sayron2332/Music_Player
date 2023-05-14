@@ -57,13 +57,9 @@ namespace Music_Player
               
                
                 string Destination = "Music\\";
-                if (Model.Source.Contains(".mp3"))
-                {
-                    MessageBox.Show("ONLY WAVE FILE!!!!!");
-                }
-                else
-                {
-                    string destFilePath = Path.Combine(Destination, Path.GetFileName(Model.TrackName + ".wav"));
+               
+             
+                    string destFilePath = Path.Combine(Destination, Path.GetFileName(Model.TrackName + ".mp3"));
                     File.Copy(Model.Source, destFilePath, true);
 
                     Track track = new Track();
@@ -95,7 +91,7 @@ namespace Music_Player
 
 
                     }
-                }
+                
                 
             }
             else

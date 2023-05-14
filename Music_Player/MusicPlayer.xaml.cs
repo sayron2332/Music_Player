@@ -152,12 +152,12 @@ namespace Music_Player
             {
                 Play = true;
                 Track TrackFromGrid = DG1.SelectedItem as Track;
-                soundPlayer = new System.Media.SoundPlayer(TrackFromGrid.Source);
+                viewModel.TrackSourcePlayNow = TrackFromGrid.Source;
                 viewModel.txtTrackName = TrackFromGrid.Name;
                 viewModel.txtAvtorName = TrackFromGrid.Author;
-                
+                myMediaElement.Play();
                 viewModel.sourceImg = "ui-img/pause.png";
-                soundPlayer.Play();
+             
                 
             }
 
@@ -165,7 +165,8 @@ namespace Music_Player
             {
                 viewModel.sourceImg = "ui-img/play.png";
                 Play = false;
-                soundPlayer.Stop();
+                myMediaElement.Pause();
+
             }
         }
 
@@ -173,7 +174,33 @@ namespace Music_Player
         {
             UpdateTracksList();
         }
+        private void Element_MediaOpened(object sender, EventArgs e)
+        {
+            timelineSlider.Maximum = myMediaElement.NaturalDuration.TimeSpan.TotalMilliseconds;
+        }
 
-        
+        // When the media playback is finished. Stop() the media to seek to media start.
+        private void Element_MediaEnded(object sender, EventArgs e)
+        {
+            myMediaElement.Stop();
+        }
+
+        private void SeekToMediaPosition(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            
+
+            // Overloaded constructor takes the arguments days, hours, minutes, seconds, milliseconds.
+            // Create a TimeSpan with miliseconds equal to the slider value.
+            TimeSpan ts = new TimeSpan(0, 0,0,0 ,(int)viewModel.slLentghTrack);
+            myMediaElement.Position = ts;
+           
+
+
+        }
+
+        private void ChangeMediaVolume(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            myMediaElement.Volume = viewModel.slVolume;
+        }
     }
 }
