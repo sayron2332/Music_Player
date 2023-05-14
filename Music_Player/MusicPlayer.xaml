@@ -156,7 +156,7 @@
                         </Image>
                     </Button>
 
-                    <Button   BorderBrush="#FF151313"  Background="#FF151313" Width="35" Height="35" Click="PlayMuisc">
+                    <Button    BorderBrush="#FF151313"  Background="#FF151313" Width="35" Height="35" Click="PlayMuisc">
                         <Image Source="{Binding sourceImg}"></Image>
                     </Button>
 
