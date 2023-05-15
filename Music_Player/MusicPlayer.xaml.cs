@@ -20,6 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using System.Xml.Linq;
 
 
@@ -33,7 +34,7 @@ namespace Music_Player
     {
         ViewModel viewModel;
         User user;
-
+        DispatcherTimer Timer;
 
         bool Play = false;
         public MusicPlayer(User User)
@@ -42,10 +43,18 @@ namespace Music_Player
             InitializeComponent();
             viewModel = ViewModel.Initialize(User);
             this.DataContext = viewModel;
-
+            Timer = new DispatcherTimer();
+            Timer.Interval = TimeSpan.FromSeconds(1);
+            Timer.Tick += Timer_Tick;
             viewModel.sourceImg = "ui-img/play.png";
             viewModel.slVolume = 1;
 
+        }
+
+        private void Timer_Tick(object? sender, EventArgs e)
+        {
+            viewModel.slLentghTrack = myMediaElement.Position.TotalSeconds;
+           
         }
 
         private void Click_btnAddPlaylist(object sender, RoutedEventArgs e)
@@ -158,6 +167,7 @@ namespace Music_Player
                 viewModel.TrackSourcePlayNow = TrackFromGrid.Source;
                 viewModel.txtTrackName = TrackFromGrid.Name;
                 viewModel.txtAvtorName = TrackFromGrid.Author;
+              
                 myMediaElement.Play();
                 viewModel.sourceImg = "ui-img/pause.png";
 
@@ -179,7 +189,9 @@ namespace Music_Player
         }
         private void Element_MediaOpened(object sender, EventArgs e)
         {
-            timelineSlider.Maximum = myMediaElement.NaturalDuration.TimeSpan.TotalMilliseconds;
+            timelineSlider.Maximum = myMediaElement.NaturalDuration.TimeSpan.TotalSeconds;
+            Timer.Start();
+           
         }
 
         // When the media playback is finished. Stop() the media to seek to media start.
@@ -195,9 +207,8 @@ namespace Music_Player
             // Overloaded constructor takes the arguments days, hours, minutes, seconds, milliseconds.
             // Create a TimeSpan with miliseconds equal to the slider value.
             TimeSpan ts = new TimeSpan(0, 0, 0, 0, (int)viewModel.slLentghTrack);
-            Thread.Sleep(100);
-
-            myMediaElement.Position = ts;
+            myMediaElement.Position = TimeSpan.FromSeconds(viewModel.slLentghTrack);
+            
 
 
 

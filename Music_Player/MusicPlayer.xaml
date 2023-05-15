@@ -227,8 +227,8 @@
                 <DockPanel>
 
                     <MediaElement MediaOpened="Element_MediaOpened" MediaEnded="Element_MediaEnded" Source="{Binding TrackSourcePlayNow}" Name="myMediaElement" 
-                     LoadedBehavior="Manual" UnloadedBehavior="Stop" Stretch="Fill"/>
-                    <Slider Value="{Binding slLentghTrack}" Name="timelineSlider" TickFrequency="1"  Style="{StaticResource Horizontal_Slider}" Margin="5" ValueChanged="SeekToMediaPosition" Width="550" Foreground="#FFD81111" ></Slider>
+                     LoadedBehavior="Manual" Stretch="Fill"/>
+                    <Slider Value="{Binding slLentghTrack}" Name="timelineSlider" TickFrequency="1"  Style="{StaticResource Horizontal_Slider}" Margin="5" ValueChanged="SeekToMediaPosition"  Foreground="#FFD81111" ></Slider>
                 </DockPanel>
             </StackPanel>
 

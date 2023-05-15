@@ -15,7 +15,7 @@ using PropertyChanged;
 namespace Music_Player
 {
     [AddINotifyPropertyChangedInterface]
-    public class ViewModel
+    public class ViewModel 
     {
 
         private static ViewModel Model = null;
@@ -70,13 +70,12 @@ namespace Music_Player
         public string PlaylistName { get; set; }
         public string TrackName { get; set; }
         public string txtTrackName { get; set; }
-
         public string sourceImg { get; set; }
         public string TrackSourcePlayNow { get; set; }
         public string txtAvtorName { get; set; }
         public string AvtorName { get; set; }
         public string Source { get; set; }
-        public double slLentghTrack { get; set; }
+        public double slLentghTrack {get; set; }
         public IEnumerable<Playlist> Playlists => playlists;
         public IEnumerable<Track> Tracks => tracks;
         public IEnumerable<Track> TracksToFind => tracksToFind;
