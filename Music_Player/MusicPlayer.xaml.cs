@@ -208,5 +208,11 @@ namespace Music_Player
         {
             myMediaElement.Volume = viewModel.slVolume;
         }
+
+        private void Click_btnSwitchRight(object sender, RoutedEventArgs e)
+        {
+            DG1.SelectedIndex++;
+         
+        }
     }
 }

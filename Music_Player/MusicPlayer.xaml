@@ -217,7 +217,7 @@
                         <Image Source="{Binding sourceImg}"></Image>
                     </Button>
 
-                    <Button Margin="15 0 0 0"   BorderBrush="#FF0A0A0A"  Background="#FF0A0A0A" Width="35" Height="35">
+                    <Button Margin="15 0 0 0"   BorderBrush="#FF0A0A0A"  Background="#FF0A0A0A" Width="35" Height="35" Click="Click_btnSwitchRight">
                         <Image Source="\ui-img\next.png"></Image>
                     </Button>
 
