@@ -33,8 +33,8 @@ namespace Music_Player
     {
         ViewModel viewModel;
         User user;
-    
-        
+
+
         bool Play = false;
         public MusicPlayer(User User)
         {
@@ -42,7 +42,7 @@ namespace Music_Player
             InitializeComponent();
             viewModel = ViewModel.Initialize(User);
             this.DataContext = viewModel;
-          
+
             viewModel.sourceImg = "ui-img/play.png";
             viewModel.slVolume = 1;
 
@@ -50,12 +50,12 @@ namespace Music_Player
 
         private void Click_btnAddPlaylist(object sender, RoutedEventArgs e)
         {
-            
+
             AddPlaylist playlist = new AddPlaylist(user);
             playlist.ShowDialog();
-           
-         
-           
+
+
+
         }
 
         private void Click_btnAddTrack(object sender, RoutedEventArgs e)
@@ -86,15 +86,15 @@ namespace Music_Player
 
 
                 query = query.OrderBy(x => x.Id);
-                   
+
 
                 var tracks = query.ToArray();
                 foreach (var track in tracks)
                 {
-                   viewModel.TrackToFindAdd((Track)track);
+                    viewModel.TrackToFindAdd((Track)track);
                 }
             }
-         
+
         }
 
         private void Click_btnAddTrackToPlaylist(object sender, RoutedEventArgs e)
@@ -130,15 +130,15 @@ namespace Music_Player
 
                     }
                 }
-               
-                    
+
+
 
             }
             else
             {
                 MessageBox.Show("Please Enter Track");
             }
-          
+
         }
 
         private void PlayMuisc(object sender, RoutedEventArgs e)
@@ -151,7 +151,7 @@ namespace Music_Player
 
 
 
-            else if(Play == false)
+            else if (Play == false)
             {
                 Play = true;
                 Track TrackFromGrid = DG1.SelectedItem as Track;
@@ -160,8 +160,8 @@ namespace Music_Player
                 viewModel.txtAvtorName = TrackFromGrid.Author;
                 myMediaElement.Play();
                 viewModel.sourceImg = "ui-img/pause.png";
-             
-                
+
+
             }
 
             else if (Play == true)
@@ -190,15 +190,15 @@ namespace Music_Player
 
         private void SeekToMediaPosition(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            
+
 
             // Overloaded constructor takes the arguments days, hours, minutes, seconds, milliseconds.
             // Create a TimeSpan with miliseconds equal to the slider value.
-            TimeSpan ts = new TimeSpan(0, 0,0, 0, (int)viewModel.slLentghTrack);
+            TimeSpan ts = new TimeSpan(0, 0, 0, 0, (int)viewModel.slLentghTrack);
             Thread.Sleep(100);
 
             myMediaElement.Position = ts;
-            
+
 
 
 
@@ -211,8 +211,71 @@ namespace Music_Player
 
         private void Click_btnSwitchRight(object sender, RoutedEventArgs e)
         {
-            DG1.SelectedIndex++;
-         
+            if (DG1.Items.Count - 1 == DG1.SelectedIndex)
+            {
+
+                DG1.SelectedIndex = 0;
+
+
+
+
+                Play = true;
+                Track TrackFromGrid = DG1.SelectedItem as Track;
+                viewModel.TrackSourcePlayNow = TrackFromGrid.Source;
+                viewModel.txtTrackName = TrackFromGrid.Name;
+                viewModel.txtAvtorName = TrackFromGrid.Author;
+                myMediaElement.Play();
+                viewModel.sourceImg = "ui-img/pause.png";
+            }
+
+            else
+            {
+                DG1.SelectedIndex++;
+
+
+
+                Play = true;
+                Track TrackFromGrid = DG1.SelectedItem as Track;
+                viewModel.TrackSourcePlayNow = TrackFromGrid.Source;
+                viewModel.txtTrackName = TrackFromGrid.Name;
+                viewModel.txtAvtorName = TrackFromGrid.Author;
+                myMediaElement.Play();
+                viewModel.sourceImg = "ui-img/pause.png";
+            }
+
+        }
+
+        private void Click_btnSwitchLeft(object sender, RoutedEventArgs e)
+        {
+            if (DG1.SelectedIndex == 0)
+            {
+
+                DG1.SelectedIndex = DG1.Items.Count;
+
+
+
+
+                Play = true;
+                Track TrackFromGrid = DG1.SelectedItem as Track;
+                viewModel.TrackSourcePlayNow = TrackFromGrid.Source;
+                viewModel.txtTrackName = TrackFromGrid.Name;
+                viewModel.txtAvtorName = TrackFromGrid.Author;
+                myMediaElement.Play();
+                viewModel.sourceImg = "ui-img/pause.png";
+            }
+
+            else
+            {
+                DG1.SelectedIndex--;
+
+                Play = true;
+                Track TrackFromGrid = DG1.SelectedItem as Track;
+                viewModel.TrackSourcePlayNow = TrackFromGrid.Source;
+                viewModel.txtTrackName = TrackFromGrid.Name;
+                viewModel.txtAvtorName = TrackFromGrid.Author;
+                myMediaElement.Play();
+                viewModel.sourceImg = "ui-img/pause.png";
+            }
         }
     }
 }

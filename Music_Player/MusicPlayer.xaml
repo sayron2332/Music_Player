@@ -200,7 +200,7 @@
             </DockPanel>
             <StackPanel VerticalAlignment="Top" Margin="20">
                 <DockPanel HorizontalAlignment="Center">
-                    <Button  Margin="0 0 15 0" BorderBrush="#FF0A0A0A"  Background="#FF0A0A0A" Width="35" Height="35">
+                    <Button Click="Click_btnSwitchLeft"  Margin="0 0 15 0" BorderBrush="#FF0A0A0A"  Background="#FF0A0A0A" Width="35" Height="35">
                         <Image Source="\ui-img\next.png" RenderTransformOrigin="0.5,0.5">
                             <Image.RenderTransform>
                                 <TransformGroup>
