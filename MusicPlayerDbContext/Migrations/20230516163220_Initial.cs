@@ -24,26 +24,6 @@ namespace Data_acces.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Playlists",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Playlists", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Playlists_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Tracks",
                 columns: table => new
                 {
@@ -53,36 +33,29 @@ namespace Data_acces.Migrations
                     Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Source = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PlaylistsId = table.Column<int>(type: "int", nullable: true)
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tracks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tracks_Playlists_PlaylistsId",
-                        column: x => x.PlaylistsId,
-                        principalTable: "Playlists",
-                        principalColumn: "Id");
+                        name: "FK_Tracks_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Playlists_UserId",
-                table: "Playlists",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Tracks_PlaylistsId",
+                name: "IX_Tracks_UserId",
                 table: "Tracks",
-                column: "PlaylistsId");
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Tracks");
-
-            migrationBuilder.DropTable(
-                name: "Playlists");
 
             migrationBuilder.DropTable(
                 name: "Users");

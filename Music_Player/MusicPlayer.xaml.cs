@@ -57,15 +57,7 @@ namespace Music_Player
            
         }
 
-        private void Click_btnAddPlaylist(object sender, RoutedEventArgs e)
-        {
-
-            AddPlaylist playlist = new AddPlaylist(user);
-            playlist.ShowDialog();
-
-
-
-        }
+        
 
         private void Click_btnAddTrack(object sender, RoutedEventArgs e)
         {
@@ -82,12 +74,12 @@ namespace Music_Player
         {
             UpdateTracksList();
         }
-        private void UpdateTracksList()
+        public void UpdateTracksList()
         {
             viewModel.TrackToFindClear();
             using (MusicPlayerDbContext Context = new MusicPlayerDbContext())
             {
-                var query = Context.Tracks.AsQueryable();
+                var query = viewModel.Tracks.AsQueryable();
 
                 if (!string.IsNullOrEmpty(viewModel.FindNameTrack))
                     query = query.Where(x => x.Name.Contains(viewModel.FindNameTrack));
@@ -106,72 +98,32 @@ namespace Music_Player
 
         }
 
-        private void Click_btnAddTrackToPlaylist(object sender, RoutedEventArgs e)
+          private void PlayNextTrack()
         {
-            if (DG1.SelectedItem != null && lsPlaylist.SelectedItem != null)
-            {
-                Track trackWithGrid = DG1.SelectedItem as Track;
-                Playlist playlist = lsPlaylist.SelectedItem as Playlist;
-                if (trackWithGrid.PlaylistsId == playlist.Id)
-                {
-                    MessageBox.Show("this track such alredy this playlist");
-                }
-                else
-                {
-                    Track NewTrack = new Track()
-                    {
-                        Name = trackWithGrid.Name,
-                        Author = trackWithGrid.Author,
-                        Source = trackWithGrid.Source,
-                        Date = trackWithGrid.Date,
-                        PlaylistsId = playlist.Id,
 
-                    };
-
-
-
-                    using (MusicPlayerDbContext Context = new MusicPlayerDbContext())
-                    {
-
-                        Context.Tracks.Remove(trackWithGrid);
-                        Context.Tracks.Add(NewTrack);
-                        Context.SaveChanges();
-
-                    }
-                }
-
-
-
-            }
-            else
-            {
-                MessageBox.Show("Please Enter Track");
-            }
-
+            Play = true;
+            Track TrackFromGrid = DG1.SelectedItem as Track;
+            viewModel.TrackSourcePlayNow = TrackFromGrid.Source;
+            viewModel.txtTrackName = TrackFromGrid.Name;
+            viewModel.txtAvtorName = TrackFromGrid.Author;
+            myMediaElement.Play();
+            viewModel.sourceImg = "ui-img/pause.png";
         }
-
+       
         private void PlayMuisc(object sender, RoutedEventArgs e)
         {
 
             if (DG1.SelectedItem == null)
             {
-                MessageBox.Show("CHOOSE TRACK!!");
+                DG1.SelectedIndex = 0; 
+                PlayNextTrack();
             }
 
 
 
             else if (Play == false)
             {
-                Play = true;
-                Track TrackFromGrid = DG1.SelectedItem as Track;
-                viewModel.TrackSourcePlayNow = TrackFromGrid.Source;
-                viewModel.txtTrackName = TrackFromGrid.Name;
-                viewModel.txtAvtorName = TrackFromGrid.Author;
-              
-                myMediaElement.Play();
-                viewModel.sourceImg = "ui-img/pause.png";
-
-
+                PlayNextTrack();
             }
 
             else if (Play == true)
@@ -197,19 +149,23 @@ namespace Music_Player
         // When the media playback is finished. Stop() the media to seek to media start.
         private void Element_MediaEnded(object sender, EventArgs e)
         {
-            myMediaElement.Stop();
-        }
+            Play = true;
+            DG1.SelectedIndex++;
+            PlayNextTrack();
 
+
+        }
+      
         private void SeekToMediaPosition(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
 
             // Overloaded constructor takes the arguments days, hours, minutes, seconds, milliseconds.
             // Create a TimeSpan with miliseconds equal to the slider value.
+         
             TimeSpan ts = new TimeSpan(0, 0, 0, 0, (int)viewModel.slLentghTrack);
             myMediaElement.Position = TimeSpan.FromSeconds(viewModel.slLentghTrack);
-            
-
+         
 
 
 
@@ -224,34 +180,14 @@ namespace Music_Player
         {
             if (DG1.Items.Count - 1 == DG1.SelectedIndex)
             {
-
                 DG1.SelectedIndex = 0;
-
-
-
-
-                Play = true;
-                Track TrackFromGrid = DG1.SelectedItem as Track;
-                viewModel.TrackSourcePlayNow = TrackFromGrid.Source;
-                viewModel.txtTrackName = TrackFromGrid.Name;
-                viewModel.txtAvtorName = TrackFromGrid.Author;
-                myMediaElement.Play();
-                viewModel.sourceImg = "ui-img/pause.png";
+                PlayNextTrack();
             }
 
             else
             {
                 DG1.SelectedIndex++;
-
-
-
-                Play = true;
-                Track TrackFromGrid = DG1.SelectedItem as Track;
-                viewModel.TrackSourcePlayNow = TrackFromGrid.Source;
-                viewModel.txtTrackName = TrackFromGrid.Name;
-                viewModel.txtAvtorName = TrackFromGrid.Author;
-                myMediaElement.Play();
-                viewModel.sourceImg = "ui-img/pause.png";
+                PlayNextTrack();
             }
 
         }
@@ -262,30 +198,36 @@ namespace Music_Player
             {
 
                 DG1.SelectedIndex = DG1.Items.Count;
-
-
-
-
-                Play = true;
-                Track TrackFromGrid = DG1.SelectedItem as Track;
-                viewModel.TrackSourcePlayNow = TrackFromGrid.Source;
-                viewModel.txtTrackName = TrackFromGrid.Name;
-                viewModel.txtAvtorName = TrackFromGrid.Author;
-                myMediaElement.Play();
-                viewModel.sourceImg = "ui-img/pause.png";
+                PlayNextTrack();
             }
 
             else
             {
                 DG1.SelectedIndex--;
+                PlayNextTrack();
+            }
+        }
 
-                Play = true;
-                Track TrackFromGrid = DG1.SelectedItem as Track;
-                viewModel.TrackSourcePlayNow = TrackFromGrid.Source;
-                viewModel.txtTrackName = TrackFromGrid.Name;
-                viewModel.txtAvtorName = TrackFromGrid.Author;
-                myMediaElement.Play();
-                viewModel.sourceImg = "ui-img/pause.png";
+        private void Click_btnDeleteTrack(object sender, RoutedEventArgs e)
+        {
+            if (DG1.SelectedItem != null)
+            {
+                Track tr = DG1.SelectedItem as Track;
+                viewModel.RemoveTrack(tr);
+                using (MusicPlayerDbContext Context = new MusicPlayerDbContext())
+                {
+                    Context.Tracks.Remove(tr);
+                    Context.SaveChanges();
+                }
+                File.Delete(tr.Source);
+                UpdateTracksList();
+              
+
+            }
+            else
+            {
+                MessageBox.Show("enter track please");
+
             }
         }
     }

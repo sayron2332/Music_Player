@@ -13,7 +13,6 @@ namespace Data_acces
     public class MusicPlayerDbContext : DbContext
     {
         public DbSet<Track> Tracks { get; set; }
-        public DbSet<Playlist> Playlists { get; set; }
         public DbSet<User> Users { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,12 +28,10 @@ namespace Data_acces
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Track>()
-          .HasOne(u => u.Playlists)
-          .WithMany(a => a.Tracks);
+       
 
             modelBuilder.Entity<User>()
-                .HasMany(p => p.Playlists)
+                .HasMany(p => p.Tracks)
                 .WithOne(a => a.User);
 
          

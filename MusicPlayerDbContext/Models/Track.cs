@@ -16,8 +16,8 @@ namespace Data_acces.Models
         public string Author { get; set; }
         public string Source { get; set; }
         public DateTime Date { get; set; }
-        public Playlist? Playlists { get; set; }
-        public int? PlaylistsId { get; set; }
+        public User User { get; set; }
+        public int UserId { get; set; }
        
 
 

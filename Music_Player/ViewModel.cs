@@ -49,17 +49,19 @@ namespace Music_Player
             user = User;
             context = new MusicPlayerDbContext();
 
-            playlists = new ObservableCollection<Playlist>(context.Playlists
-                .Where(p => p.UserId == user.Id)
-                .ToArray());
+        
 
             users = new ObservableCollection<User>(context.Users.ToArray());
-            tracks = new ObservableCollection<Track>(context.Tracks.ToArray());
-            tracksToFind = new ObservableCollection<Track>();
+            tracks = new ObservableCollection<Track>(context.Tracks
+                .Where(p => p.UserId == user.Id)
+                .ToArray());
+            tracksToFind = new ObservableCollection<Track>(context.Tracks
+                .Where(p => p.UserId == user.Id)
+                .ToArray());
         }
 
 
-        private ObservableCollection<Playlist> playlists;
+       
       
         private ObservableCollection<Track> tracks;
         private ObservableCollection<User> users;
@@ -76,22 +78,21 @@ namespace Music_Player
         public string AvtorName { get; set; }
         public string Source { get; set; }
         public double slLentghTrack {get; set; }
-        public IEnumerable<Playlist> Playlists => playlists;
         public IEnumerable<Track> Tracks => tracks;
         public IEnumerable<Track> TracksToFind => tracksToFind;
         public void AddTrack(Track tr)
         {
             tracks.Add(tr);
         }
+        public void RemoveTrack(Track tr)
+        {
+            tracks.Remove(tr);
+        }
         public void TrackToFindAdd(Track tr)
         {
             tracksToFind.Add(tr);
+        }
 
-        }
-        public void AddPlaylist(Playlist pl)
-        {
-            playlists.Add(pl);
-        }
         public void AddUser(User us)
         {
             users.Add(us);

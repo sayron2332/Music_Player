@@ -15,6 +15,6 @@ namespace Data_acces.Models
         public string Login { get; set; }
         [Required]
         public string Password { get; set; }
-        public IEnumerable<Playlist> Playlists { get; set; }
+        public IEnumerable<Track> Tracks { get; set; }
     }
 }

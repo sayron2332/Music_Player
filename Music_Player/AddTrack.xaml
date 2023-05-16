@@ -14,9 +14,9 @@
             <Label Content="Track" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <Separator></Separator>
             <Label FontSize="16" Margin="0 10 0 0" Content="Name" Foreground="White"/>
-            <TextBox Text="{Binding TrackName}" Background="#FF151313" Foreground="Black" FontSize="18"/>
+            <TextBox Text="{Binding TrackName}" Background="#FF151313" Foreground="White" FontSize="18"/>
             <Label FontSize="16" Margin="0 10 0 0" Content="Author" Foreground="White"/>
-            <TextBox Text="{Binding AvtorName}" Background="#FF151313" Foreground="Black" FontSize="18"/>
+            <TextBox Text="{Binding AvtorName}" Background="#FF151313" Foreground="White" FontSize="18"/>
             <Label FontSize="16" Margin="0 10 0 0" Content="Sourse" Foreground="White"/>
             <Grid>
                 <Grid.ColumnDefinitions>
