@@ -22,28 +22,6 @@ namespace Data_acces.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Data_acces.Models.Playlist", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Playlists");
-                });
-
             modelBuilder.Entity("Data_acces.Models.Track", b =>
                 {
                     b.Property<int>("Id")
@@ -63,16 +41,16 @@ namespace Data_acces.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PlaylistsId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Source")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("PlaylistsId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Tracks");
                 });
@@ -98,10 +76,10 @@ namespace Data_acces.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Data_acces.Models.Playlist", b =>
+            modelBuilder.Entity("Data_acces.Models.Track", b =>
                 {
                     b.HasOne("Data_acces.Models.User", "User")
-                        .WithMany("Playlists")
+                        .WithMany("Tracks")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -109,23 +87,9 @@ namespace Data_acces.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Data_acces.Models.Track", b =>
-                {
-                    b.HasOne("Data_acces.Models.Playlist", "Playlists")
-                        .WithMany("Tracks")
-                        .HasForeignKey("PlaylistsId");
-
-                    b.Navigation("Playlists");
-                });
-
-            modelBuilder.Entity("Data_acces.Models.Playlist", b =>
-                {
-                    b.Navigation("Tracks");
-                });
-
             modelBuilder.Entity("Data_acces.Models.User", b =>
                 {
-                    b.Navigation("Playlists");
+                    b.Navigation("Tracks");
                 });
 #pragma warning restore 612, 618
         }

@@ -93,114 +93,73 @@
             <Button Background="#FF151313" FontSize="14" DockPanel.Dock="Right" Width="115" Height="30" Foreground="#FFB3B2B2" Margin="20" Click="Button_Click">Пошук</Button>
             <TextBox Text="{Binding FindNameTrack}" VerticalContentAlignment="Center" DockPanel.Dock="Right" Width="150" Height="30"></TextBox>
         </DockPanel>
-        <DockPanel  DockPanel.Dock="left" >
-            
+        <DockPanel LastChildFill="True">
+            <Image Margin="20,0,0,20" DockPanel.Dock="Bottom" Height="260" Source="\ui-img\Sound.png"></Image>
+
             <Border Margin="20,0,0,10" DockPanel.Dock="Top" CornerRadius="10" Padding="10" Background="#FF151313">
-                <StackPanel>
+                <DockPanel>
 
-                    <Grid>
+                    <Grid DockPanel.Dock="Top" Margin="0,0,0,30">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.2*"></ColumnDefinition>
                             <ColumnDefinition Width="1*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="1" DockPanel.Dock="Right" FontSize="16" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313" Margin="0,10"  Click="Click_btnAddTrack">Додати трек</Button>
-                        <Image Grid.Column="0"   Height="20" DockPanel.Dock="Left" HorizontalAlignment="Center"   Source="\ui-img\AddMusic.png"></Image>
+                        <Button Grid.Column="1" DockPanel.Dock="Right" FontSize="19" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313"  Click="Click_btnAddTrack">Додати трек</Button>
+                        <Image  Grid.Column="0"   Height="50" DockPanel.Dock="Left" HorizontalAlignment="Center"   Source="\ui-img\AddMusic.png"></Image>
                     </Grid>
-                    <Grid>
+                    <Grid DockPanel.Dock="Top" Margin="0,0,0,30">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.2*"></ColumnDefinition>
                             <ColumnDefinition Width="1*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="1" Padding="10" FontSize="16" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313" DockPanel.Dock="Top" Click="Click_btnAddPlaylist">Додати плейлист</Button>
-                        <Image Grid.Column="0"   Height="20" DockPanel.Dock="Left" HorizontalAlignment="Center"   Source="\ui-img\AddPlaylist.png"></Image>
+                        <Button  Grid.Column="1" FontSize="19" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313" DockPanel.Dock="Top" Click="Click_btnDeleteTrack">Видалити трек</Button>
+                        <Image Grid.Column="0"   Height="50" DockPanel.Dock="Left" HorizontalAlignment="Center"   Source="\ui-img\AddPlaylist.png"></Image>
                     </Grid>
-                    <Grid DockPanel.Dock="Top">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="1" Padding="10" FontSize="16" Foreground="#FFB3B2B2" Background="#FF151313" BorderBrush="#FF151313" Margin="0,0,0,10" DockPanel.Dock="Top" Click="Click_btnAddTrackToPlaylist" >Додати Трек в плейлист</Button>
-                        <Image Grid.Column="0"  Height="20" DockPanel.Dock="Left" HorizontalAlignment="Center"   Source="\ui-img\AddPlaylist.png"></Image>
-                    </Grid>
+                  
+
+                    <DockPanel>
+                        
+                    </DockPanel>
 
 
 
-
-                </StackPanel>
+                </DockPanel>
             
             </Border >
 
-
-            <DockPanel MinWidth="350" DockPanel.Dock="Bottom">
-                
-
-                <Image DockPanel.Dock="Left" HorizontalAlignment="Left" Height="110" Margin="35,10,10,10"  Source="\ui-img\Sound.png"></Image>
-                <Grid DockPanel.Dock="Right">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition ></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <!--НАЗВА ТРЕКУ-->
-                    <TextBlock Text="{Binding txtTrackName}"  VerticalAlignment="Center" Margin="10,10,10,0" FontSize="18" Foreground="White" Grid.Column="0" Grid.Row="0"></TextBlock>
-                    <!--автор-->
-                    <TextBlock Text="{Binding txtAvtorName}" VerticalAlignment="Top" Margin="10,0,0,50" FontSize="16" Foreground="#FFB3B2B2" Grid.Column="0" Grid.Row="1"></TextBlock>
-                </Grid>
-            </DockPanel>
-            <Border Margin="20,0,0,0" DockPanel.Dock="Top" CornerRadius="10" Padding="10" Background="#FF151313">
-                <DockPanel >
-                   
-
-                  
-                    <Label DockPanel.Dock="Top"  HorizontalContentAlignment="Center" Foreground="#FFB3B2B2" FontSize="17">Ваші плейлісти</Label>
-                  
-                    <ListBox DockPanel.Dock="Top" Name="lsPlaylist" BorderBrush="#FF151313"  ItemsSource="{Binding Playlists}" Foreground="White" Background="#FF151313">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <DockPanel>
-                                    <TextBlock Text="{Binding Name}"
-                                       FontSize="15" FontWeight="Bold"
-                                  
-                            ></TextBlock>
-
-                                </DockPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </DockPanel>
-              
-
-            </Border>
-
-
-
-
            
+            
+         
+      
         </DockPanel>
 
-     
-     
 
+
+      
 
         <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>
-               
-               
+
+              
+                <ColumnDefinition Width="0.4*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="0.3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <DockPanel LastChildFill="False" Height="110">
-
-               
 
 
-
+            <DockPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" FontSize="17" Margin="40,20,0,0" Foreground="White" Text="{Binding txtTrackName}"></TextBlock>
+                    <TextBlock Grid.Row="1" Margin="40,0,0,0" FontSize="15" Foreground="White" Text="{Binding txtAvtorName}"></TextBlock>
+                </Grid>
             </DockPanel>
-            <StackPanel VerticalAlignment="Top" Margin="20">
+            <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="20">
                 <DockPanel HorizontalAlignment="Center">
-                    <Button  Margin="0 0 15 0" BorderBrush="#FF0A0A0A"  Background="#FF0A0A0A" Width="35" Height="35">
+                    <Button Click="Click_btnSwitchLeft"  Margin="0 0 15 0" BorderBrush="#FF0A0A0A"  Background="#FF0A0A0A" Width="35" Height="35">
                         <Image Source="\ui-img\next.png" RenderTransformOrigin="0.5,0.5">
                             <Image.RenderTransform>
                                 <TransformGroup>
@@ -227,8 +186,8 @@
                 <DockPanel>
 
                     <MediaElement MediaOpened="Element_MediaOpened" MediaEnded="Element_MediaEnded" Source="{Binding TrackSourcePlayNow}" Name="myMediaElement" 
-                     LoadedBehavior="Manual" UnloadedBehavior="Stop" Stretch="Fill"/>
-                    <Slider Value="{Binding slLentghTrack}" Name="timelineSlider" TickFrequency="1"  Style="{StaticResource Horizontal_Slider}" Margin="5" ValueChanged="SeekToMediaPosition" Width="550" Foreground="#FFD81111" ></Slider>
+                     LoadedBehavior="Manual" Stretch="Fill"/>
+                    <Slider Value="{Binding slLentghTrack}" Name="timelineSlider" TickFrequency="1"  Style="{StaticResource Horizontal_Slider}" Margin="5" ValueChanged="SeekToMediaPosition"  Foreground="#FFD81111" ></Slider>
                 </DockPanel>
             </StackPanel>
 
@@ -248,7 +207,7 @@
             <DockPanel MinHeight="315px" DockPanel.Dock="Bottom" >
                 <DataGrid BorderBrush="#FF151313"  IsReadOnly="True" Background="#FF151313" Opacity="0.5" Name="DG1" ItemsSource="{Binding TracksToFind}" AutoGenerateColumns="False" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn FontSize="17" Header="Id" Width="0.2*"  Binding="{Binding Id}"/>
+                       
                         <DataGridTextColumn FontSize="17" Header="Name" Width="1*"  Binding="{Binding Name}"/>
                         <DataGridTextColumn FontSize="17" Header="Author"  Width="1*" Binding="{Binding Author}" />
 

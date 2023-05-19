@@ -66,6 +66,7 @@ namespace Music_Player
                     track.Source = destFilePath;
                     track.Name = Model.TrackName;
                     track.Author = Model.AvtorName;
+                    track.UserId = User.Id;
                     track.Date = DateTime.Now;
 
 
